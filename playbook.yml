@@ -1,0 +1,22 @@
+#!/usr/bin/env ansible-playbook
+
+- hosts: localhost
+  connection: local
+  tasks:
+    - name: Directory check
+      debug:
+        msg: Verify the script is being run from the directory it is in
+      failed_when: not ansible_env.PWD.endswith('ansible-osx')
+      tags:
+        - always
+
+- hosts: localhost
+  connection: local
+  roles:
+    - role: basic_system
+      tags:
+        - always
+    - role: personal
+      tags:
+        - inc_personal
+

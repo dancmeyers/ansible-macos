@@ -1,0 +1,23 @@
+- name: Create dotfile dirs
+  file:
+    path: '~/{{ item }}'
+    state: directory
+  loop:
+    - .ssh
+
+- name: Checkout the homedir repo
+  shell:
+    chdir: ~/git
+    cmd: git clone git@github.com:dancmeyers/homedir-skel.git
+    creates: ~/git/homedir-skel/
+
+- name: Link dotfiles in ~
+  file:
+    src: '~/git/homedir-skel/{{ item }}'
+    path: '~/{{ item }}'
+    state: link
+  loop:
+    - .inputrc
+    - .tmux.conf
+    - .vimrc 
+  

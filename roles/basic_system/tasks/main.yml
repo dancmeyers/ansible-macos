@@ -1,0 +1,8 @@
+- name: Setup dotfiles
+  import_tasks: dotfiles.yml
+
+- name: Install apps
+  import_tasks: installs.yml
+
+- name: Configure git
+  import_tasks: git.yml
