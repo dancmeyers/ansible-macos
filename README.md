@@ -14,7 +14,8 @@ Use hombrew to install `git` and `ansible`:
 brew install git ansible
 ```
 
-Create (or restore) the `.ssh/id_rsa` and `.ssh/id_rsa.pub` files, making sure permissions are correct. Give the key access to GitHub.
+Create (or restore) the `.ssh/id_rsa` and `.ssh/id_rsa.pub` files, making sure permissions are correct. Give the key
+access to GitHub.
 
 Check out this repo from GitHub:
 
@@ -47,7 +48,11 @@ Load InfiniteFunSpace mTLS cert into Firefox (and keychain if Chrome wanted).
 
 Set 'Base' dynamic iTerm2 profile as default.
 
-Install IntelliJ IDEA and PyCharm via the Jetbrains Toolbox. Configure the toolbox to install shell scripts (in `/usr/local/bin`).
+Install IntelliJ IDEA and PyCharm via the Jetbrains Toolbox.
+
+TODO: Configure the toolbox to install shell scripts (in `/usr/local/bin`) and use this as a git diff/merge tool.
+Currently it seems to be broken.
+
 Install the following addons:
 IntelliJ IDEA:
 - .ignore
