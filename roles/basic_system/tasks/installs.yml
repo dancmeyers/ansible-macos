@@ -1,75 +1,84 @@
+- name: Tap fonts
+  community.general.homebrew_tap:
+    name: homebrew/cask-fonts
+
 - name: git (Probably installed already)
   community.general.homebrew:
     name: git
-    state: present
+
+- name: svn (Needed for font install from GitHub...)
+  community.general.homebrew:
+    name: svn
 
 - name: GnuPG
   community.general.homebrew:
     name: gnupg
-    state: present
 
 - name: kubectx
   community.general.homebrew:
     name: kubectx
-    state: present
 
 - name: kubectl
   community.general.homebrew:
     name: kubernetes-cli
-    state: present
+
+- name: mas (Mac App Store)
+  community.general.homebrew:
+    name: mas
 
 - name: pinentry-mac (used by GnuPG)
   community.general.homebrew:
     name: pinentry-mac
-    state: present
 
 - name: tmux
   community.general.homebrew:
     name: tmux
-    state: present
 
 - name: Docker for Mac
   community.general.homebrew_cask:
     name: docker
-    state: present
 
 - name: Firefox
   community.general.homebrew_cask:
     name: firefox
-    state: present
 
 - name: Google Backup and Sync
   community.general.homebrew_cask:
     name: google-backup-and-sync
-    state: present
 
 - name: iTerm2
   community.general.homebrew_cask:
     name: iterm2
-    state: present
 
 - name: Jetbrains Toolbox
   community.general.homebrew_cask:
     name: jetbrains-toolbox
-    state: present
 
 - name: KeepassXC
   community.general.homebrew_cask:
     name: keepassxc
-    state: present
 
 - name: Keybase
   community.general.homebrew_cask:
     name: keybase
-    state: present
 
 - name: Rectangle
   community.general.homebrew_cask:
     name: rectangle
-    state: present
 
 - name: Wireshark
   community.general.homebrew_cask:
     name: wireshark
-    state: present
+
+- name: Fonts
+  community.general.homebrew_cask:
+    name: font-source-code-pro-for-powerline
+
+- name: Ethernet Status Lite
+  community.general.mas:
+    id: 1227616292
+
+- name: Slack
+  community.general.mas:
+    id: 803453959
 

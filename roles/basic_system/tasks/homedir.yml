@@ -1,0 +1,48 @@
+- name: Ensure dirs exist
+  ansible.builtin.file:
+    path: '~/{{ item }}'
+    state: directory
+  loop:
+    - bin
+    - certs
+    - etc
+    - tmp
+
+- name: Ensure secure dirs exist
+  ansible.builtin.file:
+    path: '~/{{ item }}'
+    state: directory
+    mode: 0700
+  loop:
+    - .gnupg
+    - .ssh
+
+- name: Checkout the homedir repo
+  ansible.builtin.shell:
+    chdir: ~/git
+    cmd: git clone git@github.com:dancmeyers/homedir-skel.git
+    creates: ~/git/homedir-skel/
+
+- name: iTerm2 profile
+  ansible.builtin.copy:
+    src: 'Base.iTerm2.json'
+    dest: '~/Library/Application Support/iTerm2/DynamicProfiles/'
+
+- name: OhMyZsh!
+  ansible.builtin.shell:
+    cmd: sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    creates: '~/.oh-my-zsh'
+
+- name: Link dotfiles in ~
+  ansible.builtin.file:
+    src: '~/git/homedir-skel/{{ item }}'
+    path: '~/{{ item }}'
+    state: link
+  loop:
+    - .gnupg/gpg.conf
+    - .gnupg/gpg-agent.conf
+    - .inputrc
+    - .tmux.conf
+    - .vimrc
+    - .zshrc
+

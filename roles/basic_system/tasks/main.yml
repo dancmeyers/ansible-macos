@@ -1,8 +1,11 @@
-- name: Setup dotfiles
-  import_tasks: dotfiles.yml
-
 - name: Install apps
   import_tasks: installs.yml
 
 - name: Configure git
   import_tasks: git.yml
+
+- name: Setup dotfiles etc in homedir
+  import_tasks: homedir.yml
+
+- name: Configure OSX defaults
+  import_tasks: osx_defaults.yml

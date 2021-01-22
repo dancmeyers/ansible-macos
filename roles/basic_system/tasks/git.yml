@@ -16,3 +16,38 @@
     name: pull.rebase
     value: 'true'
 
+- name: IntelliJ DiffTool cmd
+  community.general.git_config:
+    scope: global
+    name: difftool.idea.cmd
+    value: idea --wait diff "$LOCAL" "$REMOTE"
+
+- name: IntelliJ DiffTool trust
+  community.general.git_config:
+    scope: global
+    name: difftool.idea.trustExitCode
+    value: 'true'
+
+- name: Use IntelliJ DiffTool
+  community.general.git_config:
+    scope: global
+    name: diff.tool
+    value: idea
+
+- name: IntelliJ MergeTool cmd
+  community.general.git_config:
+    scope: global
+    name: mergetool.idea.cmd
+    value: idea --wait merge "$BASE" "$LOCAL" "$REMOTE" "$MERGED"
+
+- name: IntelliJ MergeTool trust
+  community.general.git_config:
+    scope: global
+    name: mergetool.idea.trustExitCode
+    value: 'true'
+
+- name: Use IntelliJ MergeTool
+  community.general.git_config:
+    scope: global
+    name: merge.tool
+    value: idea

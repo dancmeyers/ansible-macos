@@ -1,0 +1,66 @@
+- name: Show scrollbars
+  community.general.osx_defaults:
+    domain: NSGlobalDomain
+    key: AppleShowScrollBars
+    type: string
+    value: Always
+
+# This seems to _work_, after a reboot, but the menu options still show as unchecked...
+- name: Enable context menu gesture
+  community.general.osx_defaults:
+    domain: NSGlobalDomain
+    key: ContextMenuGesture
+    type: int
+    value: 1
+
+- name: Enable right click
+  community.general.osx_defaults:
+    host: currentHost
+    domain: NSGlobalDomain
+    key: com.apple.trackpad.enableSecondaryClick
+    type: int
+    value: 1
+
+- name: Enable corner click
+  community.general.osx_defaults:
+    host: currentHost
+    domain: NSGlobalDomain
+    key: com.apple.trackpad.trackpadCornerClickBehavior
+    type: int
+    value: 1
+
+- name: Disable trackpad data detectors
+  community.general.osx_defaults:
+    domain: NSGlobalDomain
+    key: com.apple.trackpad.forceClick
+    type: int
+    value: 0
+
+- name: Trackpad tap to click
+  community.general.osx_defaults:
+    domain: com.apple.AppleMultitouchTrackpad
+    key: Clicking
+    type: int
+    value: 1
+
+- name: Trackpad tap to click external
+  community.general.osx_defaults:
+    domain: com.apple.driver.AppleBluetoothMultitouch.trackpad
+    key: Clicking
+    type: int
+    value: 1
+
+- name: Trackpad right click bottom right
+  community.general.osx_defaults:
+    domain: com.apple.AppleMultitouchTrackpad
+    key: TrackpadCornerSecondaryClick
+    type: int
+    value: 2
+
+- name: Trackpad right click bottom right external
+  community.general.osx_defaults:
+    domain: com.apple.driver.AppleBluetoothMultitouch.trackpad
+    key: TrackpadCornerSecondaryClick
+    type: int
+    value: 2
+
