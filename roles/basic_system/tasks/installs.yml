@@ -62,6 +62,10 @@
   community.general.homebrew_cask:
     name: keybase
 
+- name: P4Merge
+  community.general.homebrew_cask:
+    name: p4v
+
 - name: Rectangle
   community.general.homebrew_cask:
     name: rectangle

@@ -16,38 +16,44 @@
     name: pull.rebase
     value: 'true'
 
-- name: IntelliJ DiffTool cmd
+- name: P4Merge DiffTool cmd
   community.general.git_config:
     scope: global
-    name: difftool.idea.cmd
-    value: idea --wait diff "$LOCAL" "$REMOTE"
+    name: difftool.p4merge.cmd
+    value: /Applications/p4merge.app/Contents/Resources/launchp4merge "$LOCAL" "$REMOTE"
 
-- name: IntelliJ DiffTool trust
-  community.general.git_config:
-    scope: global
-    name: difftool.idea.trustExitCode
-    value: 'true'
-
-- name: Use IntelliJ DiffTool
+- name: Use P4Merge DiffTool
   community.general.git_config:
     scope: global
     name: diff.tool
-    value: idea
+    value: p4merge
 
-- name: IntelliJ MergeTool cmd
+- name: P4Merge MergeTool cmd
   community.general.git_config:
     scope: global
-    name: mergetool.idea.cmd
-    value: idea --wait merge "$BASE" "$LOCAL" "$REMOTE" "$MERGED"
+    name: mergetool.p4merge.cmd
+    value: /Applications/p4merge.app/Contents/Resources/launchp4merge "$BASE" "$LOCAL" "$REMOTE" "$MERGED"
 
-- name: IntelliJ MergeTool trust
+- name: P4Merge MergeTool trust
   community.general.git_config:
     scope: global
-    name: mergetool.idea.trustExitCode
+    name: mergetool.p4merge.trustExitCode
     value: 'true'
 
-- name: Use IntelliJ MergeTool
+- name: P4Merge MergeTool backups
+  community.general.git_config:
+    scope: global
+    name: mergetool.p4merge.keepBackup
+    value: 'false'
+
+- name: P4Merge MergeTool temporaries
+  community.general.git_config:
+    scope: global
+    name: mergetool.p4merge.keepTemporaries
+    value: 'false'
+
+- name: Use P4Merge MergeTool
   community.general.git_config:
     scope: global
     name: merge.tool
-    value: idea
+    value: p4merge
