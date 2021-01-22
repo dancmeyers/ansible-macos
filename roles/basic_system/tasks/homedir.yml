@@ -38,11 +38,42 @@
     src: '~/git/homedir-skel/{{ item }}'
     path: '~/{{ item }}'
     state: link
+    # Need to force as OhMyZsh will have created .zshrc as a file
+    force: true
   loop:
-    - .gnupg/gpg.conf
-    - .gnupg/gpg-agent.conf
+    - .gitignore-default
+    - .gitmessage
     - .inputrc
     - .tmux.conf
     - .vimrc
     - .zshrc
+
+# GPG doesn't like symlinks as config, has to be actual files
+- name: Configure GPG
+  ansible.builtin.copy:
+    src: '~/git/homedir-skel/.gnupg/gpg.conf'
+    dest: '~/.gnupg/'
+    mode: 0600
+
+- name: Configure GPG agent
+  ansible.builtin.copy:
+    src: '~/git/homedir-skel/.gnupg/gpg-agent.conf'
+    dest: '~/.gnupg/'
+    mode: 0600
+  notify:
+    - Restart GPG agent
+
+- name: Link relevant scripts in ~/bin
+  ansible.builtin.file:
+    src: '~/git/homedir-skel/bin/{{ item }}'
+    path: '~/bin/{{ item }}'
+    state: link
+  loop:
+    - update-git-repos.sh
+
+- name: Refresh git repos
+  ansible.builtin.cron:
+    name: Refresh git repos every 30 mins
+    minute: 27,57
+    job: ~/bin/update-git-repos.sh
 

@@ -1,20 +1,74 @@
-- name: Add name to gitconfig
+- name: Name
   community.general.git_config:
     scope: global
     name: user.name
     value: Dan Meyers
 
-- name: Add email to gitconfig
+- name: Email address
   community.general.git_config:
     scope: global
     name: user.email
     value: d.meyers@infinitefunspace.co.uk
+
+- name: GPG signing key
+  community.general.git_config:
+    scope: global
+    name: user.signingkey
+    value: 05A20464921EF1F031D860606A9F5EC6EF6A1B68
+
+- name: Default exclude file
+  community.general.git_config:
+    scope: global
+    name: core.excludesfile
+    value: ~/.gitignore-default
+
+- name: Sign commits
+  community.general.git_config:
+    scope: global
+    name: commit.gpgsign
+    value: 'true'
+
+- name: Commit template
+  community.general.git_config:
+    scope: global
+    name: commit.template
+    value: ~/.gitmessage
+
+- name: Override default branch to match with GitHub defaults
+  community.general.git_config:
+    scope: global
+    name: init.defaultBranch
+    value: main
+
+- name: Default push current
+  community.general.git_config:
+    scope: global
+    name: push.default
+    value: current
 
 - name: Default rebase on pull
   community.general.git_config:
     scope: global
     name: pull.rebase
     value: 'true'
+
+- name: Sync tags
+  community.general.git_config:
+    scope: global
+    name: remote.origin.tagOpt
+    value: '--tags'
+
+- name: Prune branches not on origin
+  community.general.git_config:
+    scope: global
+    name: remote.origin.prune
+    value: 'true'
+
+- name: Don't prompt on diff
+  community.general.git_config:
+    scope: global
+    name: difftool.prompt
+    value: 'false'
 
 - name: P4Merge DiffTool cmd
   community.general.git_config:
@@ -27,6 +81,12 @@
     scope: global
     name: diff.tool
     value: p4merge
+
+- name: Don't prompt on merge
+  community.general.git_config:
+    scope: global
+    name: mergetool.prompt
+    value: 'false'
 
 - name: P4Merge MergeTool cmd
   community.general.git_config:
@@ -57,3 +117,22 @@
     scope: global
     name: merge.tool
     value: p4merge
+
+- name: Pretty graph log
+  community.general.git_config:
+    scope: global
+    name: alias.log-graph
+    value: log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+
+- name: Notes in log
+  community.general.git_config:
+    scope: global
+    name: alias.log-notes
+    value: log --show-notes=*
+
+- name: Push notes
+  community.general.git_config:
+    scope: global
+    name: alias.push-notes
+    value: push origin refs/notes/*
+
