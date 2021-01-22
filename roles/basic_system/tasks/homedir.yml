@@ -48,18 +48,15 @@
     - .vimrc
     - .zshrc
 
-# GPG doesn't like symlinks as config, has to be actual files
+# Separate so we can restart on file change
 - name: Configure GPG
-  ansible.builtin.copy:
-    src: '~/git/homedir-skel/.gnupg/gpg.conf'
-    dest: '~/.gnupg/'
-    mode: 0600
-
-- name: Configure GPG agent
-  ansible.builtin.copy:
-    src: '~/git/homedir-skel/.gnupg/gpg-agent.conf'
-    dest: '~/.gnupg/'
-    mode: 0600
+  ansible.builtin.file:
+    src: '~/git/homedir-skel/.gnupg/{{ item }}'
+    dest: '~/.gnupg/{{ item }}'
+    state: link
+  loop:
+    - gpg.conf
+    - gpg-agent.conf
   notify:
     - Restart GPG agent
 

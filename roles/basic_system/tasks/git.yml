@@ -20,7 +20,7 @@
   community.general.git_config:
     scope: global
     name: core.excludesfile
-    value: ~/.gitignore-default
+    value: '{{ ansible_env.HOME }}/.gitignore-default'
 
 - name: Sign commits
   community.general.git_config:
@@ -32,7 +32,7 @@
   community.general.git_config:
     scope: global
     name: commit.template
-    value: ~/.gitmessage
+    value: '{{ ansible_env.HOME }}/.gitmessage'
 
 - name: Override default branch to match with GitHub defaults
   community.general.git_config:
