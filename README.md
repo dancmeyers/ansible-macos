@@ -1,8 +1,14 @@
 # ansible-osx
 
-Steps to set up a new Mac for development and optionally some personal utilities too. 
+Steps to set up a new Mac for development, and optionally some personal software too. 
+
+N.B. This has been tested on macOS Catalina. Settings, specifically osx defaults, may well change between releases.
+
+## Initial setup
 
 Rename the Mac under `System Preferences > Sharing > Computer Name > Edit...`.
+
+Sync up anty peripherals (so that defaults can apply to them).
 
 Log in to the Mac App Store.
 
@@ -17,6 +23,8 @@ brew install git ansible
 Create (or restore) the `.ssh/id_rsa` and `.ssh/id_rsa.pub` files, making sure permissions are correct. Give the key
 access to GitHub.
 
+## Fetch and run the playbook
+
 Check out this repo from GitHub:
 
 ```shell script
@@ -29,32 +37,39 @@ Install the community package using `ansible-galaxy`:
 ansible-galaxy collection install community.general
 ```
 
-Run the playbook:
+Run the playbook (add `--skip-tags personal` to only install work-specific software etc):
 
 ```shell script
 ansible-playbook playbook.yml --ask-become-pass
 ```
 
-Set OS defaults that don't seem to work right when set via the CLI:
-- Trackpad settings
+## Perform manual config steps
 
-Load GPG key into GnuPG.
+- Load GPG key into GnuPG
+- Grant SSH key access to mended-drum via the `homedir_skel` repo
+- Load Firefox and sign into gmail profile to sync extensions, bookmarks etc
+- Load InfiniteFunSpace mTLS cert into Firefox (and keychain if Chrome wanted)
+- Set 'Base' dynamic iTerm2 profile as default
 
-Grant SSH key access to mended-drum via `homedir_skel` repo.
+## Start/log in to apps
 
-Load Firefox and sign into gmail profile to sync extensions, bookmarks etc.
+- Docker
+- Google Backup and Sync
+- Jetbrains Toolbox
+- Keybase
+- Rectangle
+- Slack
 
-Load InfiniteFunSpace mTLS cert into Firefox (and keychain if Chrome wanted).
+## Install/set up Jetbrains apps
 
-Set 'Base' dynamic iTerm2 profile as default.
+Install via the Jetbrains Toolbox:
+- IntelliJ IDEA Ultimate
+- PyCharm Professional
 
-Install IntelliJ IDEA and PyCharm via the Jetbrains Toolbox.
+### Plugins
 
-TODO: Configure the toolbox to install shell scripts (in `/usr/local/bin`) and use this as a git diff/merge tool.
-Currently it seems to be broken.
+#### IntelliJ IDEA
 
-Install the following addons:
-IntelliJ IDEA:
 - .ignore
 - AWS Toolkit?
 - Code With Me
@@ -64,7 +79,9 @@ IntelliJ IDEA:
 - Makefile support
 - Perl
 - Scala
-PyCharm:
+
+#### PyCharm
+
 - .ignore
 - Code With Me
 - HashiCorp Terraform
@@ -72,8 +89,16 @@ PyCharm:
 - Makefile support
 - Requirements
 
-Setup preferences:
+### Preferences
+
 - Appearance & Behavior > Appearance > Theme > macOS Light
 - Editor > Color Scheme > Darcula
 
-Setup shortcuts.
+## Dock shortcuts
+
+TODO
+
+## Restart
+
+Restart the system to make sure all the settings are applied.
+

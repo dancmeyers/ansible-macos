@@ -1,88 +1,100 @@
-- name: Tap fonts
-  community.general.homebrew_tap:
-    name: homebrew/cask-fonts
-
-- name: git (Probably installed already)
+- name: Install - git (Probably installed already)
   community.general.homebrew:
     name: git
 
-- name: svn (Needed for font install from GitHub...)
+- name: Install - svn (Needed for font install from GitHub...)
   community.general.homebrew:
     name: svn
 
-- name: GnuPG
+- name: Install - AWS CLI
+  community.general.homebrew:
+    name: awscli
+
+- name: Install - GnuPG
   community.general.homebrew:
     name: gnupg
 
-- name: kubectx
+- name: Install - kubectx
   community.general.homebrew:
     name: kubectx
 
-- name: kubectl
+- name: Install - kubectl
   community.general.homebrew:
     name: kubernetes-cli
 
-- name: mas (Mac App Store)
+- name: Install - mas (Mac App Store)
   community.general.homebrew:
     name: mas
 
-- name: pinentry-mac (used by GnuPG)
+- name: Install - pinentry-mac (used by GnuPG)
   community.general.homebrew:
     name: pinentry-mac
 
-- name: tmux
+- name: Install - tmux
   community.general.homebrew:
     name: tmux
 
-- name: Docker for Mac
+- name: Install - Docker for Mac
   community.general.homebrew_cask:
     name: docker
 
-- name: Firefox
+- name: Install - Firefox
   community.general.homebrew_cask:
     name: firefox
 
-- name: Google Backup and Sync
+- name: Install - Google Backup and Sync
   community.general.homebrew_cask:
     name: google-backup-and-sync
 
-- name: iTerm2
+- name: Install - Google CLI tools
+  community.general.homebrew_cask:
+    name: google-cloud-sdk
+
+- name: Install - iTerm2
   community.general.homebrew_cask:
     name: iterm2
 
-- name: Jetbrains Toolbox
+- name: Install - Jetbrains Toolbox
   community.general.homebrew_cask:
     name: jetbrains-toolbox
 
-- name: KeepassXC
+- name: Install - KeepassXC
   community.general.homebrew_cask:
     name: keepassxc
 
-- name: Keybase
+- name: Install - Keybase
   community.general.homebrew_cask:
     name: keybase
 
-- name: P4Merge
+- name: Install - P4Merge
   community.general.homebrew_cask:
     name: p4v
 
-- name: Rectangle
+- name: Install - Rectangle
   community.general.homebrew_cask:
     name: rectangle
 
-- name: Wireshark
+- name: Install - Wireshark
   community.general.homebrew_cask:
     name: wireshark
 
-- name: Fonts
+- name: Install - Zoom
+  community.general.homebrew_cask:
+    name: zoom
+
+- name: Install - homebrew tap fonts
+  community.general.homebrew_tap:
+    name: homebrew/cask-fonts
+
+- name: Install - terminal fonts
   community.general.homebrew_cask:
     name: font-source-code-pro-for-powerline
 
-- name: Ethernet Status Lite
+- name: Install - Ethernet Status Lite
   community.general.mas:
     id: 1227616292
 
-- name: Slack
+- name: Install - Slack
   community.general.mas:
     id: 803453959
 

@@ -1,9 +1,14 @@
-- name: Spotify
+- name: Install - Spotify
   community.general.homebrew_cask:
     name: spotify
     state: present
 
-- name: WhatsApp
+- name: Install - Steam
+  community.general.homebrew_cask:
+    name: steam
+    state: present
+
+- name: Install - WhatsApp
   community.general.homebrew_cask:
     name: whatsapp
     state: present

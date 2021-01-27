@@ -1,4 +1,4 @@
-- name: Ensure dirs exist
+- name: Homedir - ensure dirs exist
   ansible.builtin.file:
     path: '~/{{ item }}'
     state: directory
@@ -6,9 +6,10 @@
     - bin
     - certs
     - etc
+    - git
     - tmp
 
-- name: Ensure secure dirs exist
+- name: Homedir - ensure secure dirs exist
   ansible.builtin.file:
     path: '~/{{ item }}'
     state: directory
@@ -17,23 +18,23 @@
     - .gnupg
     - .ssh
 
-- name: Checkout the homedir repo
+- name: Homedir - checkout the homedir repo
   ansible.builtin.shell:
     chdir: ~/git
     cmd: git clone git@github.com:dancmeyers/homedir-skel.git
     creates: ~/git/homedir-skel/
 
-- name: iTerm2 profile
+- name: Homedir - link iTerm2 profile
   ansible.builtin.copy:
     src: 'Base.iTerm2.json'
     dest: '~/Library/Application Support/iTerm2/DynamicProfiles/'
 
-- name: OhMyZsh!
+- name: Homedir - install OhMyZsh!
   ansible.builtin.shell:
     cmd: sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-    creates: '~/.oh-my-zsh'
+    creates: ~/.oh-my-zsh
 
-- name: Link dotfiles in ~
+- name: Homedir - link dotfiles in ~
   ansible.builtin.file:
     src: '~/git/homedir-skel/{{ item }}'
     path: '~/{{ item }}'
@@ -49,7 +50,7 @@
     - .zshrc
 
 # Separate so we can restart on file change
-- name: Configure GPG
+- name: Homedir - configure GPG
   ansible.builtin.file:
     src: '~/git/homedir-skel/.gnupg/{{ item }}'
     dest: '~/.gnupg/{{ item }}'
@@ -60,7 +61,7 @@
   notify:
     - Restart GPG agent
 
-- name: Link relevant scripts in ~/bin
+- name: Homedir - link relevant scripts in ~/bin
   ansible.builtin.file:
     src: '~/git/homedir-skel/bin/{{ item }}'
     path: '~/bin/{{ item }}'
@@ -68,7 +69,7 @@
   loop:
     - update-git-repos.sh
 
-- name: Refresh git repos
+- name: Homedir - cron refresh of git repos
   ansible.builtin.cron:
     name: Refresh git repos every 30 mins
     minute: 27,57

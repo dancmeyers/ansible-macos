@@ -18,5 +18,5 @@
         - always
     - role: personal
       tags:
-        - inc_personal
+        - personal
 

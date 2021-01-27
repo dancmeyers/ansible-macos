@@ -1,136 +1,136 @@
-- name: Name
+- name: Git - name
   community.general.git_config:
     scope: global
     name: user.name
     value: Dan Meyers
 
-- name: Email address
+- name: Git - email address
   community.general.git_config:
     scope: global
     name: user.email
     value: d.meyers@infinitefunspace.co.uk
 
-- name: GPG signing key
+- name: Git - GPG signing key
   community.general.git_config:
     scope: global
     name: user.signingkey
     value: 05A20464921EF1F031D860606A9F5EC6EF6A1B68
 
-- name: Default exclude file
+- name: Git - default exclude file
   community.general.git_config:
     scope: global
     name: core.excludesfile
     value: '{{ ansible_env.HOME }}/.gitignore-default'
 
-- name: Sign commits
+- name: Git - sign commits
   community.general.git_config:
     scope: global
     name: commit.gpgsign
     value: 'true'
 
-- name: Commit template
+- name: Git - commit template
   community.general.git_config:
     scope: global
     name: commit.template
     value: '{{ ansible_env.HOME }}/.gitmessage'
 
-- name: Override default branch to match with GitHub defaults
+- name: Git - override default branch to match with GitHub defaults
   community.general.git_config:
     scope: global
     name: init.defaultBranch
     value: main
 
-- name: Default push current
+- name: Git - default push current
   community.general.git_config:
     scope: global
     name: push.default
     value: current
 
-- name: Default rebase on pull
+- name: Git - default rebase on pull
   community.general.git_config:
     scope: global
     name: pull.rebase
     value: 'true'
 
-- name: Sync tags
+- name: Git - sync tags with origin
   community.general.git_config:
     scope: global
     name: remote.origin.tagOpt
     value: '--tags'
 
-- name: Prune branches not on origin
+- name: Git - prune branches not on origin
   community.general.git_config:
     scope: global
     name: remote.origin.prune
     value: 'true'
 
-- name: Don't prompt on diff
+- name: Git - don't prompt on diff
   community.general.git_config:
     scope: global
     name: difftool.prompt
     value: 'false'
 
-- name: P4Merge DiffTool cmd
+- name: Git - P4Merge difftool cmd
   community.general.git_config:
     scope: global
     name: difftool.p4merge.cmd
     value: /Applications/p4merge.app/Contents/Resources/launchp4merge "$LOCAL" "$REMOTE"
 
-- name: Use P4Merge DiffTool
+- name: Git - use P4Merge difftool
   community.general.git_config:
     scope: global
     name: diff.tool
     value: p4merge
 
-- name: Don't prompt on merge
+- name: Git - don't prompt on merge
   community.general.git_config:
     scope: global
     name: mergetool.prompt
     value: 'false'
 
-- name: P4Merge MergeTool cmd
+- name: Git - P4Merge mergetool cmd
   community.general.git_config:
     scope: global
     name: mergetool.p4merge.cmd
     value: /Applications/p4merge.app/Contents/Resources/launchp4merge "$BASE" "$LOCAL" "$REMOTE" "$MERGED"
 
-- name: P4Merge MergeTool trust
+- name: Git - P4Merge mergetool trust
   community.general.git_config:
     scope: global
     name: mergetool.p4merge.trustExitCode
     value: 'true'
 
-- name: P4Merge MergeTool backups
+- name: Git - disable P4Merge mergetool backups
   community.general.git_config:
     scope: global
     name: mergetool.p4merge.keepBackup
     value: 'false'
 
-- name: P4Merge MergeTool temporaries
+- name: Git - disable P4Merge mergetool temporaries
   community.general.git_config:
     scope: global
     name: mergetool.p4merge.keepTemporaries
     value: 'false'
 
-- name: Use P4Merge MergeTool
+- name: Git - use P4Merge mergetool
   community.general.git_config:
     scope: global
     name: merge.tool
     value: p4merge
 
-- name: Pretty graph log
+- name: Git - alias - pretty graph log
   community.general.git_config:
     scope: global
     name: alias.log-graph
     value: log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
 
-- name: Notes in log
+- name: Git - alias - log w/ notes
   community.general.git_config:
     scope: global
     name: alias.log-notes
     value: log --show-notes=*
 
-- name: Push notes
+- name: Git - alias - push notes
   community.general.git_config:
     scope: global
     name: alias.push-notes
