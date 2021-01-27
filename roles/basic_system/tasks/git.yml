@@ -118,6 +118,24 @@
     name: merge.tool
     value: p4merge
 
+- name: Git - large file support clean
+  community.general.git_config:
+    scope: global
+    name: filter.lfs.clean
+    value: git-lfs clean %f
+
+- name: Git - large file support smudge
+  community.general.git_config:
+    scope: global
+    name: filter.lfs.smudge
+    value: git-lfs smudge %f
+
+- name: Git - large file support required
+  community.general.git_config:
+    scope: global
+    name: filter.lfs.required
+    value: 'true'
+
 - name: Git - alias - pretty graph log
   community.general.git_config:
     scope: global
