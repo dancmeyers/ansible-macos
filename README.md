@@ -51,6 +51,9 @@ ansible-playbook playbook.yml --ask-become-pass
 - Load InfiniteFunSpace mTLS cert into Firefox (and keychain if Chrome wanted)
 - Set 'Base' dynamic iTerm2 profile as default
 
+Set the following iTerm2 options, which don't appear to be in the profile (maybe in the plist?):
+- Appearance > Tabs > Show tab bar even when there is only one tab
+
 ## Start/log in to apps
 
 - Docker
@@ -68,25 +71,24 @@ Install via the Jetbrains Toolbox:
 
 ### Plugins
 
-#### IntelliJ IDEA
+#### Shared (all apps)
 
 - .ignore
-- AWS Toolkit?
+- AWS Toolkit
+- Cloud Code (GCP tooling, disable unless gcloud configured)
 - Code With Me
-- Cursive
 - HashiCorp Terraform
 - Kubernetes
 - Makefile support
+
+#### IntelliJ IDEA
+
+- Cursive
 - Perl
 - Scala
 
 #### PyCharm
 
-- .ignore
-- Code With Me
-- HashiCorp Terraform
-- Kubernetes
-- Makefile support
 - Requirements
 
 ### Preferences

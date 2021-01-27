@@ -30,6 +30,10 @@
   community.general.homebrew:
     name: pinentry-mac
 
+- name: Install - pyenv
+  community.general.homebrew:
+    name: pyenv
+
 - name: Install - tmux
   community.general.homebrew:
     name: tmux
