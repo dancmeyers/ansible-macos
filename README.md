@@ -43,18 +43,15 @@ Run the playbook (add `--skip-tags personal` to only install work-specific softw
 ansible-playbook playbook.yml --ask-become-pass
 ```
 
-## Perform manual config steps
+## Perform manual config steps
 
 - Load GPG key into GnuPG
 - Grant SSH key access to mended-drum via the `homedir_skel` repo
 - Load Firefox and sign into gmail profile to sync extensions, bookmarks etc
 - Load InfiniteFunSpace mTLS cert into Firefox (and keychain if Chrome wanted)
-- Set 'Base' dynamic iTerm2 profile as default
+- Set iTerm2 to load preferences (Preferences > General > Preferences) from the plist in `basic_system/files`
 
-Set the following iTerm2 options, which don't appear to be in the profile (maybe in the plist?):
-- Appearance > Tabs > Show tab bar even when there is only one tab
-
-## Start/log in to apps
+## Start/log in to apps
 
 - Docker
 - Google Backup and Sync
@@ -87,7 +84,7 @@ Install via the Jetbrains Toolbox:
 - Perl
 - Scala
 
-#### PyCharm
+#### PyCharm
 
 - Requirements
 
