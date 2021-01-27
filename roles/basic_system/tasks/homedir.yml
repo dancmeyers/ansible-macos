@@ -23,11 +23,6 @@
     cmd: git clone git@github.com:dancmeyers/homedir-skel.git ~/git
     creates: ~/git/homedir-skel/
 
-- name: Homedir - link iTerm2 profile
-  ansible.builtin.copy:
-    src: Base.iTerm2.json
-    dest: '~/Library/Application Support/iTerm2/DynamicProfiles/'
-
 - name: Homedir - install OhMyZsh!
   ansible.builtin.shell:
     cmd: sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
@@ -51,6 +46,11 @@
   loop:
     - /usr/local/share/zsh
     - /usr/local/share/zsh/site-functions
+
+- name: Homedir, but not - remove broken _brew_cask completion link
+  ansible.builtin.file:
+    path: /usr/local/share/zsh/site-functions/_brew_cask
+    state: absent
 
 - name: Homedir - link dotfiles in ~
   ansible.builtin.file:
