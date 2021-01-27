@@ -102,3 +102,6 @@
   community.general.mas:
     id: 803453959
 
+- name: Install - Textual 7
+  community.general.mas:
+    id: 1262957439

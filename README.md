@@ -98,7 +98,16 @@ Install via the Jetbrains Toolbox:
 
 ## Dock shortcuts
 
-TODO
+- Firefox
+- KeepassXC
+- Slack
+- Textual 7
+- WhatsApp (if installed)
+- Discord (if installed)
+- Spotify (if installed)
+- iTerm2
+- IntelliJ IDEA
+- PyCharm
 
 ## Restart
 
