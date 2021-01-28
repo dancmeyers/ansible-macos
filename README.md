@@ -1,4 +1,4 @@
-# ansible-osx
+# ansible-macos
 
 Steps to set up a new Mac for development, and optionally some personal software too. 
 
