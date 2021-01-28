@@ -8,7 +8,7 @@ N.B. This has been tested on macOS Catalina. Settings, specifically osx defaults
 
 Rename the Mac under `System Preferences > Sharing > Computer Name > Edit...`.
 
-Sync up anty peripherals (so that defaults can apply to them).
+Sync up any peripherals (so that defaults can apply to them).
 
 Log in to the Mac App Store.
 
