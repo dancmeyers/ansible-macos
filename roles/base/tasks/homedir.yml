@@ -3,6 +3,8 @@
     path: '~/{{ item }}'
     state: directory
   loop:
+    - .aws
+    - .local
     - bin
     - certs
     - etc

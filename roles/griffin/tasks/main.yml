@@ -1,2 +1,5 @@
 - name: Install apps
   import_tasks: installs.yml
+
+- name: Configure system
+  import_tasks: config.yml

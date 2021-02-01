@@ -1,0 +1,19 @@
+- name: Setup AWS roles
+  ansible.builtin.copy:
+    src: '.aws/config'
+    dest: ~/.aws/config
+
+- name: Copy fonts
+  ansible.builtin.copy:
+    src: '{{ item }}'
+    dest: '~/Library/Fonts/{{ item }}'
+  loop:
+    - Cambon-Bold.otf
+    - CircularXX-Bold.otf
+    - CircularXX-Light.otf
+    - CircularXX-Regular.otf
+
+- name: Copy Office colour set
+  ansible.builtin.copy:
+    src: GRIFFIN_COLORS_2020.xml
+    dest: '~/Library/Group Containers/UBF8T346G9.Office/User Content.localized/Themes.localized/Theme Colors/'

@@ -1,3 +1,31 @@
-- name: Install - 1Password
+- name: Install - CircleCI
+  community.general.homebrew:
+    name: circleci
+
+- name: Install - Signal
   community.general.homebrew_cask:
-    name: 1password
+    name: signal
+
+- name: Install - 1Password
+  community.general.mas:
+    id: 1333542190
+
+- name: Install - MS Excel
+  community.general.mas:
+    id: 462058435
+
+- name: Install - MS OneNote
+  community.general.mas:
+    id: 784801555
+
+- name: Install - MS Outlook
+  community.general.mas:
+    id: 985367838
+
+- name: Install - MS Powerpoint
+  community.general.mas:
+    id: 462062816
+
+- name: Install - MS Word
+  community.general.mas:
+    id: 462054704

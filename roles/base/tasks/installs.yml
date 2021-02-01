@@ -10,6 +10,14 @@
   community.general.homebrew:
     name: awscli
 
+- name: Install - AWS IAM Authenticator
+  community.general.homebrew:
+    name: aws-iam-authenticator
+
+- name: Install - bat
+  community.general.homebrew:
+    name: bat
+
 - name: Install - GnuPG
   community.general.homebrew:
     name: gnupg
@@ -41,6 +49,10 @@
 - name: Install - Adobe Acrobat Reader
   community.general.homebrew_cask:
     name: adobe-acrobat-reader
+
+- name: Install - AWS Vault
+  community.general.homebrew_cask:
+    name: aws-vault
 
 - name: Install - Docker for Mac
   community.general.homebrew_cask:
