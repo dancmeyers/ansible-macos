@@ -2,10 +2,6 @@
   community.general.homebrew_cask:
     name: discord
 
-- name: Install - Spotify
-  community.general.homebrew_cask:
-    name: spotify
-
 - name: Install - Steam
   community.general.homebrew_cask:
     name: steam
@@ -13,3 +9,7 @@
 - name: Install - WhatsApp
   community.general.homebrew_cask:
     name: whatsapp
+
+- name: Install - Textual 7
+  community.general.mas:
+    id: 1262957439

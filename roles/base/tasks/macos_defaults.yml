@@ -20,12 +20,26 @@
     type: int
     value: 0
 
+- name: Defaults - disable smart quotes on dash
+  community.general.osx_defaults:
+    domain: NSGlobalDomain
+    key: NSAutomaticDashSubstitutionEnabled
+    type: int
+    value: 0
+
+- name: Defaults - disable smart quotes on quote
+  community.general.osx_defaults:
+    domain: NSGlobalDomain
+    key: NSAutomaticQuoteSubstitutionEnabled
+    type: int
+    value: 0
+
 - name: Defaults - set mouse speed
   community.general.osx_defaults:
     domain: NSGlobalDomain
     key: com.apple.mouse.scaling
     type: float
-    value: 2
+    value: 2.5
 
 - name: Defaults - disable force click data detectors
   community.general.osx_defaults:
@@ -39,7 +53,7 @@
     domain: NSGlobalDomain
     key: com.apple.trackpad.scaling
     type: float
-    value: 2
+    value: 2.5
 
 - name: Defaults - enable mouse right click
   community.general.osx_defaults:

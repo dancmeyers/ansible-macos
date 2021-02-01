@@ -7,5 +7,5 @@
 - name: Setup dotfiles etc in homedir
   import_tasks: homedir.yml
 
-- name: Configure OSX defaults
-  import_tasks: osx_defaults.yml
+- name: Configure macOS defaults
+  import_tasks: macos_defaults.yml

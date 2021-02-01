@@ -38,6 +38,10 @@
   community.general.homebrew:
     name: tmux
 
+- name: Install - Adobe Acrobat Reader
+  community.general.homebrew_cask:
+    name: adobe-acrobat-reader
+
 - name: Install - Docker for Mac
   community.general.homebrew_cask:
     name: docker
@@ -78,6 +82,10 @@
   community.general.homebrew_cask:
     name: rectangle
 
+- name: Install - Spotify
+  community.general.homebrew_cask:
+    name: spotify
+
 - name: Install - Wireshark
   community.general.homebrew_cask:
     name: wireshark
@@ -98,10 +106,11 @@
   community.general.mas:
     id: 1227616292
 
+- name: Install - Meeter
+  community.general.mas:
+    id: 1510445899
+
 - name: Install - Slack
   community.general.mas:
     id: 803453959
 
-- name: Install - Textual 7
-  community.general.mas:
-    id: 1262957439

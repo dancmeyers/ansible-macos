@@ -37,7 +37,8 @@ Install the community package using `ansible-galaxy`:
 ansible-galaxy collection install community.general
 ```
 
-Run the playbook (add `--skip-tags personal` to only install work-specific software etc):
+Run the playbook (add `--run-tags griffin|personal|etc` to only install specific software etc based on role. `base` is
+included by default):
 
 ```shell script
 ansible-playbook playbook.yml --ask-become-pass
