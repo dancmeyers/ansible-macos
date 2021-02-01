@@ -102,10 +102,6 @@
   community.general.homebrew_cask:
     name: wireshark
 
-- name: Install - Zoom
-  community.general.homebrew_cask:
-    name: zoom
-
 - name: Install - homebrew tap fonts
   community.general.homebrew_tap:
     name: homebrew/cask-fonts

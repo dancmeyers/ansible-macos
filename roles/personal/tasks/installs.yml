@@ -10,6 +10,10 @@
   community.general.homebrew_cask:
     name: whatsapp
 
+- name: Install - Zoom
+  community.general.homebrew_cask:
+    name: zoom
+
 - name: Install - Textual 7
   community.general.mas:
     id: 1262957439
