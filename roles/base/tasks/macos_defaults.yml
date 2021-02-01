@@ -118,3 +118,9 @@
     type: int
     value: 0
 
+- name: Defaults - set iTerm2 preferences location
+  community.general.osx_defaults:
+    domain: com.googlecode.iterm2
+    key: PrefsCustomFolder
+    type: string
+    value: '{{ ansible_env.PWD }}/roles/base/files/'
