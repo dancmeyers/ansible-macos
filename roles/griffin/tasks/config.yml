@@ -1,3 +1,4 @@
+# Copy so that we can add stuff to the file without changing the repo
 - name: Setup AWS roles
   ansible.builtin.copy:
     src: '.aws/config'
@@ -17,3 +18,9 @@
   ansible.builtin.copy:
     src: GRIFFIN_COLORS_2020.xml
     dest: '~/Library/Group Containers/UBF8T346G9.Office/User Content.localized/Themes.localized/Theme Colors/'
+
+- name: Override some of the zsh setup
+  ansible.builtin.file:
+    src: '{{ ansible_env.PWD }}/roles/griffin/files/.zshrc_custom'
+    dest: '~/.zshrc_custom'
+    state: link
