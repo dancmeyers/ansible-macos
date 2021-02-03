@@ -42,6 +42,10 @@
   community.general.homebrew:
     name: pyenv
 
+- name: Install stern
+  community.general.homebrew:
+    name: stern
+
 - name: Install - tmux
   community.general.homebrew:
     name: tmux
@@ -49,6 +53,10 @@
 - name: Install - Adobe Acrobat Reader
   community.general.homebrew_cask:
     name: adobe-acrobat-reader
+
+- name: Install - Authy
+  community.general.homebrew_cask:
+    name: authy
 
 - name: Install - AWS Vault
   community.general.homebrew_cask:
@@ -109,6 +117,10 @@
 - name: Install - terminal fonts
   community.general.homebrew_cask:
     name: font-source-code-pro-for-powerline
+
+- name: Install - 1Password
+  community.general.mas:
+    id: 1333542190
 
 - name: Install - Ethernet Status Lite
   community.general.mas:

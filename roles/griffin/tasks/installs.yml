@@ -1,14 +1,26 @@
+- name: Install - homebrew tap Clojure tools
+  community.general.homebrew_tap:
+    name: clojure/tools
+
+- name: Install - homebrew tap K9s
+  community.general.homebrew_tap:
+    name: derailed/k9s
+
 - name: Install - CircleCI
   community.general.homebrew:
     name: circleci
 
+- name: Install - Clojure
+  community.general.homebrew:
+    name: clojure/tools/clojure
+
+- name: Install - K9s
+  community.general.homebrew:
+    name: derailed/k9s/k9s
+
 - name: Install - Signal
   community.general.homebrew_cask:
     name: signal
-
-- name: Install - 1Password
-  community.general.mas:
-    id: 1333542190
 
 - name: Install - MS Excel
   community.general.mas:
