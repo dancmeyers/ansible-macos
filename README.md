@@ -82,8 +82,9 @@ Install via the Jetbrains Toolbox:
 #### IntelliJ IDEA
 
 - Cursive
-- Perl
+- Perl (disable if not in use, conflicts with Cursive sometimes)
 - Scala
+- SequenceDiagram
 
 #### PyCharm
 
