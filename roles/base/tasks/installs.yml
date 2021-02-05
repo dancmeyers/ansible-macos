@@ -86,10 +86,6 @@
   community.general.homebrew_cask:
     name: jetbrains-toolbox
 
-- name: Install - KeepassXC
-  community.general.homebrew_cask:
-    name: keepassxc
-
 - name: Install - Keybase
   community.general.homebrew_cask:
     name: keybase
