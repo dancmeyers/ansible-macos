@@ -79,6 +79,8 @@ Install via the Jetbrains Toolbox:
 - Kubernetes
 - Makefile support
 
+Configure the Markdown plugin (bundled) to enable PlantUML support (Preferences > Languages & Frameworks > Markdown)
+
 #### IntelliJ IDEA
 
 - Cursive
