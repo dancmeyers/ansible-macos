@@ -49,6 +49,7 @@ ansible-playbook playbook.yml --ask-become-pass
 - Load GPG key into GnuPG
 - Grant SSH key access to mended-drum via the `homedir_skel` repo
 - Load Firefox and sign into gmail profile to sync extensions, bookmarks etc
+- Install the [1Password Firefox plugin](https://1password.com/browsers/firefox/), that doesn't sync
 - Load InfiniteFunSpace mTLS cert into Firefox (and keychain if Chrome wanted)
 - Set iTerm2 to load preferences (Preferences > General > Preferences) from the plist in `basic_system/files`
 
