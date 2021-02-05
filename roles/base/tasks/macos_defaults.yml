@@ -118,6 +118,13 @@
     type: int
     value: 0
 
+- name: Defaults - set titlebar clock format
+  community.general.osx_defaults:
+    domain: com.apple.menuextra.clock
+    key: DateFormat
+    type: string
+    value: EEE d MMM  HH:mm
+
 - name: Defaults - set iTerm2 preferences location
   community.general.osx_defaults:
     domain: com.googlecode.iterm2

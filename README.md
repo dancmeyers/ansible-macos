@@ -67,6 +67,9 @@ Install via the Jetbrains Toolbox:
 - IntelliJ IDEA Ultimate
 - PyCharm Professional
 
+Use [IDE Settings Sync](https://www.jetbrains.com/help/idea/sharing-your-ide-settings.html#IDE_settings_sync) to sync
+plugins, keymaps etc from other IDE installs.
+
 ### Plugins
 
 #### Shared (all apps)
@@ -95,16 +98,18 @@ Configure the Markdown plugin (bundled) to enable PlantUML support (Preferences 
 
 - Appearance & Behavior > Appearance > Theme > macOS Light
 - Editor > Color Scheme > Darcula
+- Keymap > macOS custom
 
 ## Dock shortcuts
 
 - Firefox
-- KeepassXC
+- 1Password
 - Slack
-- Textual 7
+- Textual 7 (if installed)
+- Signal (if installed)
 - WhatsApp (if installed)
 - Discord (if installed)
-- Spotify (if installed)
+- Spotify
 - iTerm2
 - IntelliJ IDEA
 - PyCharm
@@ -112,4 +117,3 @@ Configure the Markdown plugin (bundled) to enable PlantUML support (Preferences 
 ## Restart
 
 Restart the system to make sure all the settings are applied.
-
