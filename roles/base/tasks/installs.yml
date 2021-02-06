@@ -118,10 +118,6 @@
   community.general.mas:
     id: 1333542190
 
-- name: Install - Ethernet Status Lite
-  community.general.mas:
-    id: 1227616292
-
 - name: Install - Meeter
   community.general.mas:
     id: 1510445899

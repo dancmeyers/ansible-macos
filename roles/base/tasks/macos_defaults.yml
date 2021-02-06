@@ -125,6 +125,44 @@
     type: string
     value: EEE d MMM  HH:mm
 
+- name: Defaults - set titlebar clock 24hr
+  community.general.osx_defaults:
+    domain: com.apple.menuextra.clock
+    key: Show24Hour
+    type: int
+    value: 1
+
+- name: Defaults - set titlebar clock show day of month
+  community.general.osx_defaults:
+    domain: com.apple.menuextra.clock
+    key: ShowDayOfMonth
+    type: int
+    value: 1
+
+- name: Defaults - set titlebar clock show day
+  community.general.osx_defaults:
+    domain: com.apple.menuextra.clock
+    key: ShowDayOfWeek
+    type: int
+    value: 1
+
+# These battery and bluetooth settings don't _actually_ work on Big Sur... Pressing the button sets the defaults, but
+# setting the defaults doesn't turn on (or off) the button/menu item...
+- name: Defaults - Show Bluetooth menu in titlebar
+  community.general.osx_defaults:
+    domain: com.apple.controlcenter
+    key: NSStatusItem Visible Bluetooth
+    type: int
+    value: 1
+
+- name: Defaults - Show Battery menu in titlebar
+  community.general.osx_defaults:
+    domain: com.apple.controlcenter
+    key: NSStatusItem Visible Battery
+    type: int
+    value: 1
+
+# These ones work, on Catalina
 - name: Defaults - Show Bluetooth menu on titlebar
   community.general.osx_defaults:
     domain: com.apple.systemuiserver
