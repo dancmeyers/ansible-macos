@@ -125,6 +125,30 @@
     type: string
     value: EEE d MMM  HH:mm
 
+- name: Defaults - Show Bluetooth menu on titlebar
+  community.general.osx_defaults:
+    domain: com.apple.systemuiserver
+    key: NSStatusItem Visible com.apple.menuextra.bluetooth
+    type: int
+    value: 1
+
+- name: Defaults - Add Bluetooth menu details
+  community.general.osx_defaults:
+    domain: com.apple.systemuiserver
+    key: menuExtras
+    type: array
+    array_add: yes
+    value:
+      - /System/Library/CoreServices/Menu Extras/Bluetooth.menu
+
+- name: Defaults - Show percentage on battery in taskbar
+  community.general.osx_defaults:
+    domain: com.apple.menuextra.battery
+    key: ShowPercent
+    type: string
+    # This needs to be quoted otherwise it comes out as 'True', but it's definitely a string not a boolean
+    value: 'YES'
+
 - name: Defaults - set iTerm2 preferences location
   community.general.osx_defaults:
     domain: com.googlecode.iterm2
