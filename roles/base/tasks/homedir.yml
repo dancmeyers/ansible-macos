@@ -69,6 +69,12 @@
     - .vimrc
     - .zshrc
 
+- name: Homedir - Add custom zsh config
+  ansible.builtin.file:
+    src: '~/git/homedir-skel/001-custom.zsh'
+    path: '~/.oh-my-zsh/custom/001-custom.zsh'
+    state: link
+
 # Separate so we can restart on file change
 - name: Homedir - configure GPG
   ansible.builtin.file:
