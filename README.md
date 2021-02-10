@@ -79,6 +79,7 @@ plugins, keymaps etc from other IDE installs.
 - AWS Toolkit
 - Cloud Code (GCP tooling, disable unless gcloud configured)
 - Code With Me
+- File Watchers
 - HashiCorp Terraform
 - Kubernetes
 - Makefile support
