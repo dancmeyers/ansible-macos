@@ -25,7 +25,7 @@
     path: '~/bin/vault-to-creds.sh'
     state: link
 
-- name: Add cutom zsh config
+- name: Add custom zsh config
   ansible.builtin.file:
     src: '{{ ansible_env.PWD }}/roles/griffin/files/010-griffin.zsh'
     path: '~/.oh-my-zsh/custom/010-griffin.zsh'

@@ -45,3 +45,9 @@
 - name: Install - MS Word
   community.general.mas:
     id: 462054704
+
+- name: Install - clj-kondo
+  ansible.builtin.shell:
+    cmd: sh -c "$(curl -fsSL https://raw.githubusercontent.com/clj-kondo/clj-kondo/master/script/install-clj-kondo)"
+    creates: /usr/local/bin/clj-kondo
+
