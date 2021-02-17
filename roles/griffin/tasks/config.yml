@@ -19,12 +19,6 @@
     src: GRIFFIN_COLORS_2020.xml
     dest: '~/Library/Group Containers/UBF8T346G9.Office/User Content.localized/Themes.localized/Theme Colors/'
 
-- name: Move vault-to-creds.sh to bin dir
-  ansible.builtin.file:
-    src: '{{ ansible_env.PWD }}/roles/griffin/files/vault-to-creds.sh'
-    path: '~/bin/vault-to-creds.sh'
-    state: link
-
 - name: Add custom zsh config
   ansible.builtin.file:
     src: '{{ ansible_env.PWD }}/roles/griffin/files/010-griffin.zsh'
