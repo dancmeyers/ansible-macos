@@ -22,6 +22,10 @@
   community.general.homebrew:
     name: gnupg
 
+- name: Install - jq
+  community.general.homebrew:
+    name: jq
+
 - name: Install - kubectx
   community.general.homebrew:
     name: kubectx
