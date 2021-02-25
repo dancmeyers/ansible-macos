@@ -54,6 +54,10 @@
   community.general.homebrew:
     name: tmux
 
+- name: Install - watch
+  community.general.homebrew:
+    name: watch
+
 - name: Install - Adobe Acrobat Reader
   community.general.homebrew_cask:
     name: adobe-acrobat-reader
