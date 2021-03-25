@@ -46,6 +46,10 @@
   community.general.homebrew:
     name: pyenv
 
+- name: Install - pwgen
+  community.general.homebrew:
+    name: pwgen
+
 - name: Install stern
   community.general.homebrew:
     name: stern
