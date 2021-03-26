@@ -83,6 +83,7 @@ plugins, keymaps etc from other IDE installs.
 - HashiCorp Terraform
 - Kubernetes
 - Makefile support
+- Wrap to Column
 
 Configure the Markdown plugin (bundled) to enable PlantUML support (Preferences > Languages & Frameworks > Markdown)
 
