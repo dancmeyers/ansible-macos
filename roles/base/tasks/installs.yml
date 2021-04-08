@@ -70,10 +70,6 @@
   community.general.homebrew_cask:
     name: authy
 
-- name: Install - AWS Vault
-  community.general.homebrew_cask:
-    name: aws-vault
-
 - name: Install - Docker for Mac
   community.general.homebrew_cask:
     name: docker
@@ -89,6 +85,10 @@
 - name: Install - Google CLI tools
   community.general.homebrew_cask:
     name: google-cloud-sdk
+
+- name: Install - Insomnia REST client
+  community.general.homebrew_cask:
+    name: insomnia
 
 - name: Install - iTerm2
   community.general.homebrew_cask:
