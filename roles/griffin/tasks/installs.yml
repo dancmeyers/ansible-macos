@@ -18,6 +18,10 @@
   community.general.homebrew:
     name: docker-credential-helper-ecr
 
+- name: Install - Helm
+  community.general.homebrew:
+    name: helm
+
 - name: Install - K9s
   community.general.homebrew:
     name: derailed/k9s/k9s
