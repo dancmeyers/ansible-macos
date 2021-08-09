@@ -30,6 +30,10 @@
   community.general.homebrew_cask:
     name: aws-vault
 
+- name: Install - Pop
+  community.general.homebrew_cask:
+    name: pop
+
 - name: Install - Signal
   community.general.homebrew_cask:
     name: signal
