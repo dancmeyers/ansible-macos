@@ -38,6 +38,10 @@
   community.general.homebrew_cask:
     name: signal
 
+- name: Install - OpenIn
+  community.general.mas:
+    id: 1547147101
+
 - name: Install - MS Excel
   community.general.mas:
     id: 462058435
