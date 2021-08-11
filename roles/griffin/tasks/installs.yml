@@ -34,6 +34,10 @@
   community.general.homebrew_cask:
     name: pop
 
+- name: Install - Postman
+  community.general.homebrew_cask:
+    name: postman
+
 - name: Install - Signal
   community.general.homebrew_cask:
     name: signal
