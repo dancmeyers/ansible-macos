@@ -6,6 +6,10 @@
   community.general.homebrew_tap:
     name: derailed/k9s
 
+- name: Install - Bazel
+  community.general.homebrew:
+    name: bazel
+
 - name: Install - CircleCI
   community.general.homebrew:
     name: circleci
