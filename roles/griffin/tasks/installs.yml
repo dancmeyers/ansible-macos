@@ -34,6 +34,10 @@
   community.general.homebrew_cask:
     name: aws-vault
 
+- name: Install - MS Teams
+  community.general.homebrew_cask:
+    name: microsoft-teams
+
 - name: Install - Pop
   community.general.homebrew_cask:
     name: pop
