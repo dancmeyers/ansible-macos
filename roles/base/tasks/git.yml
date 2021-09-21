@@ -136,6 +136,18 @@
     name: filter.lfs.required
     value: 'true'
 
+- name: Git - alias - push force-with-lease
+  community.general.git_config:
+    scope: global
+    name: alias.pfl
+    value: push --force-with-lease
+
+- name: Git - alias - push notes
+  community.general.git_config:
+    scope: global
+    name: alias.pn
+    value: push origin refs/notes/*
+
 - name: Git - alias - pretty graph log
   community.general.git_config:
     scope: global
@@ -147,10 +159,4 @@
     scope: global
     name: alias.log-notes
     value: log --show-notes=*
-
-- name: Git - alias - push notes
-  community.general.git_config:
-    scope: global
-    name: alias.push-notes
-    value: push origin refs/notes/*
 
