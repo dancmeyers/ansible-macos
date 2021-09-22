@@ -74,9 +74,9 @@
   community.general.homebrew_cask:
     name: firefox
 
-- name: Install - Google Backup and Sync
+- name: Install - Google Drive for Desktop
   community.general.homebrew_cask:
-    name: google-backup-and-sync
+    name: google-drive
 
 - name: Install - Google CLI tools
   community.general.homebrew_cask:
