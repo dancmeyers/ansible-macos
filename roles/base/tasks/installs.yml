@@ -22,6 +22,10 @@
   community.general.homebrew:
     name: gnupg
 
+- name: Install - ipcalc
+  community.general.homebrew:
+    name: ipcalc
+
 - name: Install - jq
   community.general.homebrew:
     name: jq
