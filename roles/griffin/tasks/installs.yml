@@ -18,6 +18,22 @@
   community.general.homebrew:
     name: clojure/tools/clojure
 
+- name: /usr/local/bin (arm64)
+  when: ansible_architecture == "arm64"
+  become: yes
+  ansible.builtin.file:
+    path: /usr/local/bin
+    state: directory
+    mode: 0755
+
+- name: Link - clojure (arm64)
+  when: ansible_architecture == "arm64"
+  become: yes
+  ansible.builtin.file:
+    src: /opt/homebrew/bin/clojure
+    path: /usr/local/bin/clojure
+    state: link
+
 - name: Install - Docker ECR helper
   community.general.homebrew:
     name: docker-credential-helper-ecr
@@ -33,6 +49,10 @@
 - name: Install - AWS Vault
   community.general.homebrew_cask:
     name: aws-vault
+
+- name: Install - Google Chrome
+  community.general.homebrew_cask:
+    name: google-chrome
 
 - name: Install - MS Teams
   community.general.homebrew_cask:
@@ -74,8 +94,15 @@
   community.general.mas:
     id: 462054704
 
-- name: Install - clj-kondo
+- name: Install - clj-kondo (x86_64)
+  when: ansible_architecture == "x86_64"
   ansible.builtin.shell:
     cmd: sh -c "$(curl -fsSL https://raw.githubusercontent.com/clj-kondo/clj-kondo/master/script/install-clj-kondo)"
     creates: /usr/local/bin/clj-kondo
+
+- name: Install - clj-kondo (arm64)
+  when: ansible_architecture == "arm64"
+  ansible.builtin.shell:
+    cmd: sh -c "$(curl -fsSL https://raw.githubusercontent.com/clj-kondo/clj-kondo/master/script/install-clj-kondo)" -- --dir /opt/local/bin
+    creates: /opt/local/bin/clj-kondo
 

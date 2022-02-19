@@ -48,7 +48,7 @@ Install the community package using `ansible-galaxy`:
 ansible-galaxy collection install community.general
 ```
 
-Run the playbook (add `--run-tags griffin|personal|etc` to only install specific software etc based on role. `base` is
+Run the playbook (add `--tags griffin|personal|etc` to only install specific software etc based on role. `base` is
 included by default):
 
 ```shell script
@@ -117,6 +117,8 @@ Configure the Markdown plugin (bundled) to enable PlantUML support (Preferences 
 ## Dock shortcuts
 
 - Firefox
+- Google Chrome
+- Postman (if installed)
 - 1Password
 - Slack
 - Textual 7 (if installed)

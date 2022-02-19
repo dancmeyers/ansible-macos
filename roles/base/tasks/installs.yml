@@ -134,6 +134,10 @@
   community.general.mas:
     id: 1510445899
 
+- name: Install - OpenIn
+  community.general.mas:
+    id: 1547147101
+
 - name: Install - Slack
   community.general.mas:
     id: 803453959
