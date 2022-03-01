@@ -79,6 +79,8 @@ Install via the Jetbrains Toolbox:
 - IntelliJ IDEA Ultimate
 - PyCharm Professional
 
+Configure `Preferences` > `Version Control` > `Commit` > `Use non-modal commit interface`.
+
 Use [IDE Settings Sync](https://www.jetbrains.com/help/idea/sharing-your-ide-settings.html#IDE_settings_sync) to sync
 plugins, keymaps etc from other IDE installs.
 
