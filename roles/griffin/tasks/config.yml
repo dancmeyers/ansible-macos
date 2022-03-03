@@ -1,8 +1,8 @@
-# Copy so that we can add stuff to the file without changing the repo
 - name: Setup AWS roles
-  ansible.builtin.copy:
-    src: '.aws/config'
-    dest: ~/.aws/config
+  ansible.builtin.file:
+    src: ~/git/banksy/dev-resources/.aws/config
+    path: ~/.aws/config
+    state: link
 
 - name: Copy fonts
   ansible.builtin.copy:
