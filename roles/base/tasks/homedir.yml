@@ -99,11 +99,11 @@
   loop:
     - update-git-repos.sh
 
-- name: Homedir - cron refresh of git repos
-  ansible.builtin.cron:
-    name: Refresh git repos every 30 mins
-    minute: 27,57
-    job: ~/bin/update-git-repos.sh
+#- name: Homedir - cron refresh of git repos
+#  ansible.builtin.cron:
+#    name: Refresh git repos every 30 mins
+#    minute: 27,57
+#    job: ~/bin/update-git-repos.sh
 
 - name: Create dir for misc installs
   when: ansible_architecture == "arm64"
