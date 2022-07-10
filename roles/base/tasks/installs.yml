@@ -114,6 +114,10 @@
   community.general.homebrew_cask:
     name: spotify
 
+- name: Install - Trailer
+  community.general.homebrew_task:
+    name: trailer
+
 - name: Install - Wireshark
   community.general.homebrew_cask:
     name: wireshark
