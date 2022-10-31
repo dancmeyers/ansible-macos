@@ -50,6 +50,10 @@
   community.general.homebrew:
     name: pyenv
 
+- name: Install - pyenv-virtualenv
+  community.general.homebrew:
+    name: pyenv-virtualenv
+
 - name: Install - pwgen
   community.general.homebrew:
     name: pwgen

@@ -160,3 +160,8 @@
     name: alias.log-notes
     value: log --show-notes=*
 
+- name: Git - rebase updates dependent branches
+  community.general.git_config:
+    scope: global
+    name: rebase.updateRefs
+    value: 'true'
