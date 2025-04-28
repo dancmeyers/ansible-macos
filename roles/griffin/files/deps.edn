@@ -1,0 +1,6 @@
+{
+  :aliases {:user {:extra-deps {vvvvalvalval/scope-capture {:mvn/version "0.3.3"}}}
+            :portal {:extra-deps {djblue/portal {:mvn/version "0.35.1"}}}
+            :portal-griffin {:extra-deps {djblue/portal {:mvn/version "0.35.1"}}
+                             :main-opts ["-e" "(require '[griffin.user] '[griffin.portal :as portal])"]}}
+}

@@ -2,11 +2,11 @@
 
 Steps to set up a new Mac for development, and optionally some personal software too. 
 
-N.B. This has been tested on macOS Catalina. Settings, specifically osx defaults, may well change between releases.
+N.B. This has been tested on macOS Sequoia. Settings, specifically osx defaults, may well change between releases.
 
 ## Initial setup
 
-Rename the Mac under `System Preferences > Sharing > Computer Name > Edit...`.
+Rename the Mac under `System Preferences > Sharing > Computer Name > Edit...` (unless overridden by employer policy).
 
 Sync up any peripherals (so that defaults can apply to them).
 
@@ -14,14 +14,61 @@ Log in to the Mac App Store.
 
 Install `homebrew` according to https://brew.sh.
 
-Use hombrew to install `git` and `ansible`:
+Use hombrew to install:
+- `ansible`
+- `git`
+- `gnupg`
+- `google-drive`
+- `pinentry-mac`
 
 ```shell script
-brew install git ansible
+brew install ansible git gnupg pinentry-mac
+brew install --cask google-drive
 ```
 
-Create (or restore) the `.ssh/id_rsa` and `.ssh/id_rsa.pub` files, making sure permissions are correct. Give the key
-access to GitHub.
+Connect Google Drive, then load our ASCII-armoured cert from it into GPG:
+```
+gpg --import ~/Google\ Drive/My\ Drive/certs/${USER}.asc
+```
+
+N.B. the command to export this if modified is:
+```
+gpg --export-secret-keys --export-options export-backup --armor --output ~/Google\ Drive/My\ Drive/certs/${USER}.asc 05A20464921EF1F031D860606A9F5EC6EF6A1B68
+```
+
+Configure it for ultimate trust:
+```
+gpg --edit-key 05A20464921EF1F031D860606A9F5EC6EF6A1B68
+gpg> trust
+<option 5>
+<exit>
+```
+
+Create the following 2 config files, so that `git` and `ssh` can fetch keys correctly:
+`~/.gnupg/gpg-agent.conf`:
+```
+pinentry-program /opt/homebrew/bin/pinentry-mac
+enable-ssh-support
+default-cache-ttl 600
+max-cache-ttl 7200
+```
+
+`~/.gnupg/gpg.conf`:
+```
+default-key 05A20464921EF1F031D860606A9F5EC6EF6A1B69
+auto-key-retrieve
+no-emit-version
+```
+
+Reload the GPG agent to pick up the changes:
+```
+gpg-connect-agent reloadagent /bye
+```
+
+Temporarily export the `SSH_AUTH_SOCK` env var to allow SSH to communicate with `gpg-agent`:
+```
+export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+```
 
 ## Install Rosetta 2 (if needed)
 
@@ -57,12 +104,11 @@ ansible-playbook playbook.yml --ask-become-pass
 
 ## Perform manual config steps
 
-- Load GPG key into GnuPG
-- Grant SSH key access to mended-drum via the `homedir_skel` repo
 - Load Firefox and sign into gmail profile to sync extensions, bookmarks etc
-- Install the [1Password Classic Firefox plugin](https://support.1password.com/cs/1password-classic-extension/), that doesn't sync automatically from the Firefox profile.
 - Load InfiniteFunSpace mTLS cert into Firefox (and keychain if Chrome wanted)
-- Set iTerm2 to load preferences (Preferences > General > Preferences) from the plist in `basic_system/files`
+- Install LogiTune
+- Configure Trailer (if installed): import from Google Drive under `Work`
+- Configure Velja (if installed)
 
 ## Start/log in to apps
 
@@ -70,7 +116,6 @@ ansible-playbook playbook.yml --ask-become-pass
 - Google Backup and Sync
 - Jetbrains Toolbox
 - Keybase
-- Rectangle
 - Slack
 
 ## Install/set up Jetbrains apps
@@ -86,51 +131,7 @@ plugins, keymaps etc from other IDE installs.
 
 ### Plugins
 
-#### Shared (all apps)
-
-- .ignore
-- AWS Toolkit
-- Cloud Code (GCP tooling, disable unless gcloud configured)
-- Code With Me
-- File Watchers
-- HashiCorp Terraform
-- Kubernetes
-- Makefile support
-- Wrap to Column
-
 Configure the Markdown plugin (bundled) to enable PlantUML support (Preferences > Languages & Frameworks > Markdown)
-
-#### IntelliJ IDEA
-
-- Cursive
-- Perl (disable if not in use, conflicts with Cursive sometimes)
-- Scala
-
-#### PyCharm
-
-- Requirements
-
-### Preferences
-
-- Appearance & Behavior > Appearance > Theme > macOS Light
-- Editor > Color Scheme > Darcula
-- Keymap > macOS custom
-
-## Dock shortcuts
-
-- Firefox
-- Google Chrome
-- Postman (if installed)
-- 1Password
-- Slack
-- Textual 7 (if installed)
-- Signal (if installed)
-- WhatsApp (if installed)
-- Discord (if installed)
-- Spotify
-- iTerm2
-- IntelliJ IDEA
-- PyCharm
 
 ## Restart
 

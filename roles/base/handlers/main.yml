@@ -1,3 +1,3 @@
 - name: Restart GPG agent
   ansible.builtin.shell:
-    cmd: killall gpg-agent
+    cmd: gpg-connect-agent reloadagent /bye

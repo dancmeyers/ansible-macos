@@ -1,10 +1,14 @@
+- name: Install - 1Password
+  community.general.homebrew_cask:
+    name: 1password
+
 - name: Install - Darktable
   community.general.homebrew_cask:
     name: darktable
 
-- name: Install - Discord
+- name: Install - DigiKam
   community.general.homebrew_cask:
-    name: discord
+    name: digikam
 
 - name: Install - Steam
   community.general.homebrew_cask:
@@ -14,10 +18,11 @@
   community.general.homebrew_cask:
     name: whatsapp
 
-- name: Install - Zoom
-  community.general.homebrew_cask:
-    name: zoom
+#- name: Install - Zoom
+#  community.general.homebrew_cask:
+#    name: zoom
 
-- name: Install - Textual 7
-  community.general.mas:
-    id: 1262957439
+#- name: Install - Textual 7
+#  community.general.mas:
+#    id: 1262957439
+# See https://help.codeux.com/textual/Leaving-Mac-App-Store.kb

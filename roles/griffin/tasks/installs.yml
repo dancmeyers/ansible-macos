@@ -2,13 +2,21 @@
   community.general.homebrew_tap:
     name: clojure/tools
 
-- name: Install - homebrew tap K9s
+- name: Install - homebrew tap Hashicorp
   community.general.homebrew_tap:
-    name: derailed/k9s
+    name: hashicorp/tap
 
-- name: Install - Bazel
+- name: Install - adr-tools
   community.general.homebrew:
-    name: bazel
+    name: adr-tools
+
+- name: Install - AWS IAM Authenticator
+  community.general.homebrew:
+    name: aws-iam-authenticator
+
+- name: Install - Bazelisk
+  community.general.homebrew:
+    name: bazelisk
 
 - name: Install - CircleCI
   community.general.homebrew:
@@ -18,61 +26,90 @@
   community.general.homebrew:
     name: clojure/tools/clojure
 
-- name: /usr/local/bin (arm64)
-  when: ansible_architecture == "arm64"
-  become: yes
-  ansible.builtin.file:
-    path: /usr/local/bin
-    state: directory
-    mode: 0755
-
-- name: Link - clojure (arm64)
-  when: ansible_architecture == "arm64"
-  become: yes
-  ansible.builtin.file:
-    src: /opt/homebrew/bin/clojure
-    path: /usr/local/bin/clojure
-    state: link
-
-- name: Install - Docker ECR helper
+- name: Install - gnu-tar
   community.general.homebrew:
-    name: docker-credential-helper-ecr
+    name: gnu-tar
+
+- name: Install - graphviz
+  community.general.homebrew:
+    name: graphviz
 
 - name: Install - Helm
   community.general.homebrew:
     name: helm
 
-- name: Install - K9s
+- name: Install - libsodium
   community.general.homebrew:
-    name: derailed/k9s/k9s
+    name: libsodium
 
-- name: Install - AWS Vault
+- name: Install - mitmproxy
+  community.general.homebrew:
+    name: mitmproxy
+
+- name: Install - NodeJS
+  community.general.homebrew:
+    name: node@20
+    state: linked
+
+- name: Install - packer
+  community.general.homebrew:
+    name: hashicorp/tap/packer
+
+- name: Install - pnpm
+  community.general.homebrew:
+    name: pnpm@8
+    state: linked
+
+- name: Install - Temurin
+  community.general.homebrew:
+    name: temurin@21
+
+- name: Install - yarn
+  community.general.homebrew:
+    name: yarn
+
+- name: Uninstall - OpenJDK
+  community.general.homebrew:
+    name: openjdk
+    state: absent
+    install_options:
+      - ignore-dependencies
+
+- name: Install - Docker
   community.general.homebrew_cask:
-    name: aws-vault
+    name: docker
 
-- name: Install - Google Chrome
+- name: Install - Docker ECR helper
+  community.general.homebrew:
+    name: docker-credential-helper-ecr
+
+- name: Install - Fathom
   community.general.homebrew_cask:
-    name: google-chrome
+    name: fathom
 
-- name: Install - MS Teams
+#- name: Install - Google Chrome
+#  community.general.homebrew_cask:
+#    name: google-chrome
+
+#- name: Install - Pop
+#  community.general.homebrew_cask:
+#    name: pop
+
+#- name: Install - Postman
+#  community.general.homebrew_cask:
+#    name: postman
+
+- name: Install - Trailer
   community.general.homebrew_cask:
-    name: microsoft-teams
+    name: trailer
 
-- name: Install - Pop
+- name: Install - visualvm
   community.general.homebrew_cask:
-    name: pop
+    name: visualvm
 
-- name: Install - Postman
-  community.general.homebrew_cask:
-    name: postman
-
-- name: Install - Signal
-  community.general.homebrew_cask:
-    name: signal
-
-- name: Install - OpenIn
+- name: Install - MeetingBar
   community.general.mas:
-    id: 1547147101
+    id: 1532419400
 
 - name: Install - MS Excel
   community.general.mas:
@@ -94,14 +131,35 @@
   community.general.mas:
     id: 462054704
 
-- name: Install - clj-kondo (x86_64)
-  when: ansible_architecture == "x86_64"
-  ansible.builtin.shell:
-    cmd: sh -c "$(curl -fsSL https://raw.githubusercontent.com/clj-kondo/clj-kondo/master/script/install-clj-kondo)"
-    creates: /usr/local/bin/clj-kondo
+- name: Install - Slack
+  community.general.mas:
+    id: 803453959
 
-- name: Install - clj-kondo (arm64)
-  when: ansible_architecture == "arm64"
+- name: Install - Velja
+  community.general.mas:
+    id: 1607635845
+
+- name: Uninstall - iMovie
+  community.general.mas:
+    id: 408981434
+    state: absent
+
+- name: Uninstall - Keynote
+  community.general.mas:
+    id: 409183694
+    state: absent
+
+- name: Uninstall - Numbers
+  community.general.mas:
+    id: 409203825
+    state: absent
+
+- name: Uninstall - Pages
+  community.general.mas:
+    id: 409201541
+    state: absent
+
+- name: Install - clj-kondo
   ansible.builtin.shell:
     cmd: sh -c "$(curl -fsSL https://raw.githubusercontent.com/clj-kondo/clj-kondo/master/script/install-clj-kondo)" -- --dir /opt/local/bin
     creates: /opt/local/bin/clj-kondo

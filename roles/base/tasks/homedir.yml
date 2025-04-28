@@ -22,8 +22,8 @@
 
 - name: Homedir - checkout the homedir repo
   ansible.builtin.shell:
-    cmd: git clone git@github.com:dancmeyers/homedir-skel.git ~/git
-    creates: ~/git/homedir-skel/
+    cmd: git clone git@github.com:dancmeyers/homedir-skel.git ~/git/homedir-skel
+    creates: ~/git/homedir-skel
 
 - name: Homedir - install OhMyZsh!
   ansible.builtin.shell:
@@ -40,21 +40,16 @@
     cmd: git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
     creates: ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
 
-- name: Homedir, but not - Set permissions for zsh completion directories
-  when: ansible_architecture == "x86_64"
-  ansible.builtin.file:
-    path: '{{ item }}'
-    state: directory
-    mode: 0700 
-  loop:
-    - /usr/local/share/zsh
-    - /usr/local/share/zsh/site-functions
+- name: Homedir - install spaceship ZSH theme
+  ansible.builtin.shell:
+    cmd: git clone git@github.com:spaceship-prompt/spaceship-prompt.git ~/.oh-my-zsh/custom/themes/spaceship-prompt --depth=1
+    creates: ~/.oh-my-zsh/custom/themes/spaceship-prompt
 
-- name: Homedir, but not - remove broken _brew_cask completion link
-  when: ansible_architecture == "x86_64"
+- name: Homedir - link spaceship ZSH theme
   ansible.builtin.file:
-    path: /usr/local/share/zsh/site-functions/_brew_cask
-    state: absent
+    src: '~/.oh-my-zsh/custom/themes/spaceship-prompt/spaceship.zsh-theme'
+    path: '~/.oh-my-zsh/custom/themes/spaceship.zsh-theme'
+    state: link
 
 - name: Homedir - link dotfiles in ~
   ansible.builtin.file:
@@ -82,12 +77,16 @@
     src: '~/git/homedir-skel/.gnupg/gpg.conf'
     dest: '~/.gnupg/gpg.conf'
     state: link
+    # Overwrite any temp version installed to get this repo down
+    force: true
 
 - name: Homedir - configure gpg-agent
   ansible.builtin.file:
     src: '~/git/homedir-skel/.gnupg/gpg-agent.conf.{{ ansible_architecture }}'
     dest: '~/.gnupg/gpg-agent.conf'
     state: link
+    # Overwrite any temp version installed to get this repo down
+    force: true
   notify:
     - Restart GPG agent
 
@@ -105,14 +104,12 @@
 #    minute: 27,57
 #    job: ~/bin/update-git-repos.sh
 
-- name: Create dir for misc installs
-  when: ansible_architecture == "arm64"
+- name: Create dir for misc installs (Often hangs...)
   become: yes
   ansible.builtin.file:
     path: '/opt/local/bin'
     state: directory
-    mode: 0700
+    mode: 0755
     owner: '{{ ansible_user_id }}'
     group: 'staff'
-
 

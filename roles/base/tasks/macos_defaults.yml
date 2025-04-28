@@ -1,153 +1,203 @@
-- name: Defaults - show scrollbars
+## Global
+
+- name: Defaults - Show scrollbars
   community.general.osx_defaults:
-    domain: NSGlobalDomain
+    domain: Apple Global Domain
     key: AppleShowScrollBars
     type: string
     value: Always
 
-# This seems to _work_, after a reboot, but the trackpad first page menu options all show as unchecked...
-- name: Defaults - enable context menu gesture?
+- name: Defaults - Scrollbar click jump to spot
   community.general.osx_defaults:
-    domain: NSGlobalDomain
-    key: ContextMenuGesture
+    domain: Apple Global Domain
+    key: AppleScrollerPagingBehavior
     type: int
     value: 1
 
-- name: Defaults - turn off swipe to change pages
+- name: Defaults - Show file extensions
   community.general.osx_defaults:
-    domain: NSGlobalDomain
-    key: AppleEnableMouseSwipeNavigateWithScrolls
-    type: int
-    value: 0
-
-- name: Defaults - disable smart quotes on dash
-  community.general.osx_defaults:
-    domain: NSGlobalDomain
-    key: NSAutomaticDashSubstitutionEnabled
-    type: int
-    value: 0
-
-- name: Defaults - disable smart quotes on quote
-  community.general.osx_defaults:
-    domain: NSGlobalDomain
-    key: NSAutomaticQuoteSubstitutionEnabled
-    type: int
-    value: 0
-
-- name: Defaults - set mouse speed
-  community.general.osx_defaults:
-    domain: NSGlobalDomain
-    key: com.apple.mouse.scaling
-    type: float
-    value: 2.5
-
-- name: Defaults - disable force click data detectors
-  community.general.osx_defaults:
-    domain: NSGlobalDomain
-    key: com.apple.trackpad.forceClick
-    type: int
-    value: 0
-
-- name: Defaults - set trackpad speed
-  community.general.osx_defaults:
-    domain: NSGlobalDomain
-    key: com.apple.trackpad.scaling
-    type: float
-    value: 2.5
-
-- name: Defaults - enable mouse right click
-  community.general.osx_defaults:
-    domain: com.apple.AppleMultitouchMouse
-    key: MouseButtonMode
-    type: string
-    value: TwoButton
-
-- name: Defaults - trackpad tap to click
-  community.general.osx_defaults:
-    domain: com.apple.AppleMultitouchTrackpad
-    key: Clicking
+    domain: Apple Global Domain
+    key: AppleShowAllExtensions
     type: int
     value: 1
 
-- name: Defaults - trackpad right click bottom right
-  community.general.osx_defaults:
-    domain: com.apple.AppleMultitouchTrackpad
-    key: TrackpadCornerSecondaryClick
-    type: int
-    value: 2
+## Dock
 
-- name: Defaults - trackpad disable 2 finger 'right click'
+- name: Defaults - Dock size
   community.general.osx_defaults:
-    domain: com.apple.AppleMultitouchTrackpad
-    key: TrackpadRightClick
+    domain: com.apple.dock
+    key: tilesize
     type: int
-    value: 0
+    value: 42
 
-- name: Defaults - enable exposé
+- name: Defaults - Enable exposé
   community.general.osx_defaults:
     domain: com.apple.dock
     key: showAppExposeGestureEnabled
     type: int
     value: 1
 
-- name: Defaults - enable mouse driver right click
+- name: Defaults - Disable default hot corner
   community.general.osx_defaults:
-    domain: com.apple.driver.AppleBluetoothMultitouch.mouse
-    key: MouseButtonMode
-    type: string
-    value: TwoButton
+    domain: com.apple.dock
+    key: wvous-br-corner
+    type: int
+    value: 1
 
-- name: Defaults - trackpad driver tap to click
+## Keyboard
+
+- name: Defaults - Disable auto-capitalisation
+  community.general.osx_defaults:
+    domain: Apple Global Domain
+    key: NSAutomaticCapitalizationEnabled
+    type: int
+    value: 0
+
+- name: Defaults - Disable smart quotes on dash
+  community.general.osx_defaults:
+    domain: Apple Global Domain
+    key: NSAutomaticDashSubstitutionEnabled
+    type: int
+    value: 0
+
+- name: Defaults - Disable smart quotes on quote
+  community.general.osx_defaults:
+    domain: Apple Global Domain
+    key: NSAutomaticQuoteSubstitutionEnabled
+    type: int
+    value: 0
+
+- name: Defaults - Disable spelling correction
+  community.general.osx_defaults:
+    domain: Apple Global Domain
+    key: NSAutomaticSpellingCorrectionEnabled
+    type: int
+    value: 0
+
+## Trackpad
+
+- name: Defaults - Enable additional gesture options
+  community.general.osx_defaults:
+    domain: Apple Global Domain
+    key: ContextMenuGesture
+    type: int
+    value: 1
+
+- name: Defaults - Disable force click data detectors
+  community.general.osx_defaults:
+    domain: Apple Global Domain
+    key: com.apple.trackpad.forceClick
+    type: int
+    value: 0
+
+- name: Defaults - Set trackpad speed
+  community.general.osx_defaults:
+    domain: Apple Global Domain
+    key: com.apple.trackpad.scaling
+    type: float
+    value: 2.5
+
+- name: Defaults - Trackpad tap to click
+  community.general.osx_defaults:
+    domain: com.apple.AppleMultitouchTrackpad
+    key: Clicking
+    type: int
+    value: 1
+
+# Won't be reflected in the UI...
+- name: Defaults - Trackpad right click bottom right
+  community.general.osx_defaults:
+    domain: com.apple.AppleMultitouchTrackpad
+    key: TrackpadCornerSecondaryClick
+    type: int
+    value: 2
+
+- name: Defaults - Trackpad disable 2 finger 'right click'
+  community.general.osx_defaults:
+    domain: com.apple.AppleMultitouchTrackpad
+    key: TrackpadRightClick
+    type: int
+    value: 0
+
+- name: Defaults - Trackpad driver tap to click
   community.general.osx_defaults:
     domain: com.apple.driver.AppleBluetoothMultitouch.trackpad
     key: Clicking
     type: int
     value: 1
 
-- name: Defaults - trackpad driver right click bottom right
+- name: Defaults - Trackpad driver right click bottom right
   community.general.osx_defaults:
     domain: com.apple.driver.AppleBluetoothMultitouch.trackpad
     key: TrackpadCornerSecondaryClick
     type: int
     value: 2
 
-- name: Defaults - trackpad driver disable 2 finger 'right click'
+- name: Defaults - Trackpad driver disable 2 finger 'right click'
   community.general.osx_defaults:
     domain: com.apple.driver.AppleBluetoothMultitouch.trackpad
     key: TrackpadRightClick
     type: int
     value: 0
 
-- name: Defaults - set titlebar clock format
+## Mouse
+
+- name: Defaults - Set mouse speed
   community.general.osx_defaults:
-    domain: com.apple.menuextra.clock
-    key: DateFormat
+    domain: Apple Global Domain
+    key: com.apple.mouse.scaling
+    type: float
+    value: 3
+
+- name: Defaults - Enable mouse right click
+  community.general.osx_defaults:
+    domain: com.apple.AppleMultitouchMouse
+    key: MouseButtonMode
     type: string
-    value: EEE d MMM  HH:mm
+    value: TwoButton
 
-- name: Defaults - set titlebar clock 24hr
+- name: Defaults - Enable mouse driver right click
   community.general.osx_defaults:
-    domain: com.apple.menuextra.clock
-    key: Show24Hour
+    domain: com.apple.driver.AppleBluetoothMultitouch.mouse
+    key: MouseButtonMode
+    type: string
+    value: TwoButton
+
+- name: Defaults - Enable mouse swipe between desktops, not pages
+  community.general.osx_defaults:
+    domain: com.apple.AppleMultitouchMouse
+    key: MouseTwoFingerHorizSwipeGesture
+    type: int
+    value: 2
+
+- name: Defaults - Enable mouse driver swipe between desktops, not pages
+  community.general.osx_defaults:
+    domain: com.apple.driver.AppleBluetoothMultitouch.mouse
+    key: MouseTwoFingerHorizSwipeGesture
+    type: int
+    value: 2
+
+## Control Centre
+
+### Battery
+
+- name: Defaults - Always show battery in control centre
+  community.general.osx_defaults:
+    domain: com.apple.controlcenter
+    key: NSStatusItem Visible Battery
     type: int
     value: 1
 
-- name: Defaults - set titlebar clock show day of month
-  community.general.osx_defaults:
-    domain: com.apple.menuextra.clock
-    key: ShowDayOfMonth
-    type: int
-    value: 1
+#- name: Defaults - Show percentage on battery in taskbar
+#  community.general.osx_defaults:
+#    domain: com.apple.menuextra.battery
+#    key: ShowPercent
+#    type: string
+#    # This needs to be quoted otherwise it comes out as 'True', but it's definitely a string not a boolean
+#    value: 'YES'
 
-- name: Defaults - set titlebar clock show day
-  community.general.osx_defaults:
-    domain: com.apple.menuextra.clock
-    key: ShowDayOfWeek
-    type: int
-    value: 1
+### Bluetooth
 
-# These battery and bluetooth settings don't _actually_ work on Big Sur... Pressing the button sets the defaults, but
-# setting the defaults doesn't turn on (or off) the button/menu item...
 - name: Defaults - Show Bluetooth menu in titlebar
   community.general.osx_defaults:
     domain: com.apple.controlcenter
@@ -155,41 +205,99 @@
     type: int
     value: 1
 
-- name: Defaults - Show Battery menu in titlebar
+### Clock
+
+#- name: Defaults - Set control centre clock 24hr
+#  community.general.osx_defaults:
+#    domain: com.apple.menuextra.clock
+#    key: Show24Hour
+#    type: int
+#    value: 1
+
+- name: Defaults - Set control centre clock show date
   community.general.osx_defaults:
-    domain: com.apple.controlcenter
-    key: NSStatusItem Visible Battery
+    domain: com.apple.menuextra.clock
+    key: ShowDate
     type: int
     value: 1
 
-# These ones work, on Catalina
-- name: Defaults - Show Bluetooth menu on titlebar
+- name: Defaults - Set control centre clock show day
   community.general.osx_defaults:
-    domain: com.apple.systemuiserver
-    key: NSStatusItem Visible com.apple.menuextra.bluetooth
+    domain: com.apple.menuextra.clock
+    key: ShowDayOfWeek
     type: int
     value: 1
 
-- name: Defaults - Add Bluetooth menu details
-  community.general.osx_defaults:
-    domain: com.apple.systemuiserver
-    key: menuExtras
-    type: array
-    array_add: yes
-    value:
-      - /System/Library/CoreServices/Menu Extras/Bluetooth.menu
+### Sound
 
-- name: Defaults - Show percentage on battery in taskbar
+- name: Defaults - Always show sound in control centre
   community.general.osx_defaults:
-    domain: com.apple.menuextra.battery
-    key: ShowPercent
-    type: string
-    # This needs to be quoted otherwise it comes out as 'True', but it's definitely a string not a boolean
-    value: 'YES'
+    domain: com.apple.controlcentre
+    key: NSStatusItem Visible Sound
+    type: int
+    value: 1
 
-- name: Defaults - set iTerm2 preferences location
+## Misc apps
+
+### Google Drive
+
+- name: Defaults - Start Google Drive on login
+  community.general.osx_defaults:
+    domain: com.google.drivefs.settings
+    key: AutoStartOnLogin
+    type: int
+    value: 1
+
+- name: Defaults - Don't prompt for device backup to drive
+  community.general.osx_defaults:
+    domain: com.google.drivefs.settings
+    key: PromptToBackupDevices
+    type: int
+    value: 0
+
+### iTerm2
+
+- name: Defaults - Set iTerm2 preferences location
   community.general.osx_defaults:
     domain: com.googlecode.iterm2
     key: PrefsCustomFolder
     type: string
     value: '{{ ansible_env.PWD }}/roles/base/files/'
+
+- name: Defaults - Load iTerm2 preferences from file
+  community.general.osx_defaults:
+    domain: com.googlecode.iterm2
+    key: LoadPrefsFromCustomFolder
+    type: int
+    value: 1
+
+### Rectangle
+
+- name: Defaults - Run rectangle on login
+  community.general.osx_defaults:
+    domain: com.knollsoft.Rectangle
+    key: launchOnLogin
+    type: int
+    value: 1
+
+- name: Defaults - Disable MacOS edge tiling
+  community.general.osx_defaults:
+    domain: com.apple.WindowManager
+    key: EnableTilingByEdgeDrag
+    type: int
+    value: 0
+
+- name: Defaults - Disable MacOS top tiling
+  community.general.osx_defaults:
+    domain: com.apple.WindowManager
+    key: EnableTopTilingByEdgeDrag
+    type: int
+    value: 0
+
+- name: Defaults - Disable MacOS shortcut tiling
+  community.general.osx_defaults:
+    domain: com.apple.WindowManager
+    key: EnableTilingOptionAccelerator
+    type: int
+    value: 0
+

@@ -1,8 +1,7 @@
-- name: Setup AWS roles
-  ansible.builtin.file:
-    src: ~/git/banksy/dev-resources/.aws/config
-    path: ~/.aws/config
-    state: link
+- name: Checkout the banksy repo
+  ansible.builtin.shell:
+    cmd: git clone git@github.com:griffinbank/banksy.git ~/git/banksy
+    creates: ~/git/banksy
 
 - name: Copy fonts
   ansible.builtin.copy:
@@ -24,3 +23,43 @@
     src: '{{ ansible_env.PWD }}/roles/griffin/files/010-griffin.zsh'
     path: '~/.oh-my-zsh/custom/010-griffin.zsh'
     state: link
+
+- name: Ensure docker config dir exists
+  ansible.builtin.file:
+    path: '~/.docker'
+    state: directory
+    mode: 0700
+
+- name: Ensure Clojure dirs exists
+  ansible.builtin.file:
+    path: '~/{{ item }}'
+    state: directory
+  loop:
+    - .clojure
+    - .m2
+
+- name: Add docker config
+  ansible.builtin.file:
+    src: '~/git/banksy/dev-resources/.docker/config.json'
+    path: '~/.docker/config.json'
+    state: link
+
+- name: Add .m2 settings
+  ansible.builtin.file:
+    src: '~/git/banksy/dev-resources/.m2/settings.xml'
+    path: '~/.m2/settings.xml'
+    state: link
+
+- name: Add default Clojure deps.edn
+  ansible.builtin.file:
+    src: '{{ ansible_env.PWD }}/roles/griffin/files/deps.edn'
+    path: '~/.clojure/deps.edn'
+    state: link
+    force: true
+
+- name: Add with_creds to path
+  ansible.builtin.file:
+    src: '~/git/banksy/tools/with_creds.sh'
+    path: '~/bin/with_creds.sh'
+    state: link
+
