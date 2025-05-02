@@ -92,7 +92,7 @@
 
 - name: Homedir - configure gpg-agent
   ansible.builtin.file:
-    src: '~/git/homedir-skel/.gnupg/gpg-agent.conf.{{ ansible_architecture }}'
+    src: '~/git/homedir-skel/.gnupg/gpg-agent.conf'
     dest: '~/.gnupg/gpg-agent.conf'
     state: link
     # Overwrite any temp version installed to get this repo down
