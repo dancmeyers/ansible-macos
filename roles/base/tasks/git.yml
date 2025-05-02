@@ -1,3 +1,15 @@
+- name: Git - set up YubiKey SSH public key for signing config
+  ansible.builtin.file:
+    src: '{{ ansible_env.PWD }}/roles/base/files/id_rsa.yubi.pub'
+    path: '~/.ssh/id_rsa.yubi.pub'
+    state: link
+
+- name: Git - configure YubiKey SSH as authorised for signing
+  ansible.builtin.file:
+    src: '{{ ansible_env.PWD }}/roles/base/files/allowed_signers'
+    path: '~/.ssh/allowed_signers'
+    state: link
+
 - name: Git - name
   community.general.git_config:
     scope: global
@@ -10,11 +22,23 @@
     name: user.email
     value: d.meyers@infinitefunspace.co.uk
 
-- name: Git - GPG signing key
+- name: Git - SSH signing key
   community.general.git_config:
     scope: global
     name: user.signingkey
-    value: 05A20464921EF1F031D860606A9F5EC6EF6A1B68
+    value: ~/.ssh/id_rsa.yubi.pub
+
+- name: Git - enable SSH signing
+  community.general.git_config:
+    scope: global
+    name: gpg.format
+    value: ssh
+
+- name: Git - configure allowed SSH signing keys
+  community.general.git_config:
+    scope: global
+    name: gpg.ssh.allowedSignersFile
+    value: '~/.ssh/allowed_signers'
 
 - name: Git - default exclude file
   community.general.git_config:
@@ -33,6 +57,12 @@
     scope: global
     name: commit.template
     value: '{{ ansible_env.HOME }}/.gitmessage'
+
+- name: Git - sign tags
+  community.general.git_config:
+    scope: global
+    name: tag.gpgsign
+    value: 'true'
 
 - name: Git - override default branch to match with GitHub defaults
   community.general.git_config:
