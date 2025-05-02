@@ -25,6 +25,12 @@
     repo: git@github.com:dancmeyers/homedir-skel.git
     dest: ~/git/homedir-skel
 
+- name: Homedir - set SSH config
+  ansible.builtin.file:
+    src: '~/git/homedir-skel/.ssh/config'
+    path: '~/.ssh.config'
+    state: link
+
 - name: Homedir - install OhMyZsh!
   ansible.builtin.shell:
     cmd: sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"

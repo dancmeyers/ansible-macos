@@ -1,12 +1,12 @@
 - name: Git - set up YubiKey SSH public key for signing config
   ansible.builtin.file:
-    src: '{{ ansible_env.PWD }}/roles/base/files/id_rsa.yubi.pub'
+    src: '~/git/homedir-skel/.ssh/id_rsa.yubi.pub'
     path: '~/.ssh/id_rsa.yubi.pub'
     state: link
 
 - name: Git - configure YubiKey SSH as authorised for signing
   ansible.builtin.file:
-    src: '{{ ansible_env.PWD }}/roles/base/files/allowed_signers'
+    src: '~/git/homedir-skel/.ssh/allowed_signers'
     path: '~/.ssh/allowed_signers'
     state: link
 
@@ -44,7 +44,7 @@
   community.general.git_config:
     scope: global
     name: core.excludesfile
-    value: '{{ ansible_env.HOME }}/.gitignore-default'
+    value: '~/.gitignore-default'
 
 - name: Git - sign commits
   community.general.git_config:
@@ -56,7 +56,7 @@
   community.general.git_config:
     scope: global
     name: commit.template
-    value: '{{ ansible_env.HOME }}/.gitmessage'
+    value: '~/.gitmessage'
 
 - name: Git - sign tags
   community.general.git_config:
