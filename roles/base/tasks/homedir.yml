@@ -19,6 +19,7 @@
   loop:
     - .gnupg
     - .ssh
+    - Library/LaunchAgents
 
 - name: Homedir - checkout the homedir repo
   ansible.builtin.git:
@@ -100,6 +101,12 @@
   notify:
     - Restart GPG agent
 
+- name: Homedir - set gpg-agent to run on login
+  ansible.builtin.file:
+    src: '{{ ansible_env.PWD }}/roles/base/files/org.gnupg.gpg-agent.plist'
+    dest: '~/Library/LaunchAgents/org.gnupg.gpg-agent.plist'
+    state: hard
+
 - name: Homedir - link relevant scripts in ~/bin
   ansible.builtin.file:
     src: '~/git/homedir-skel/bin/{{ item }}'
@@ -114,12 +121,12 @@
 #    minute: 27,57
 #    job: ~/bin/update-git-repos.sh
 
-- name: Create dir for misc installs (Often hangs...)
-  become: yes
-  ansible.builtin.file:
-    path: '/opt/local/bin'
-    state: directory
-    mode: 0755
-    owner: '{{ ansible_user_id }}'
-    group: 'staff'
+#- name: Create dir for misc installs (Often hangs...)
+#  become: yes
+#  ansible.builtin.file:
+#    path: '/opt/local/bin'
+#    state: directory
+#    mode: 0755
+#    owner: '{{ ansible_user_id }}'
+#    group: 'staff'
 

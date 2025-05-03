@@ -97,6 +97,7 @@
     type: float
     value: 2.5
 
+# Won't be reflected in the UI...
 - name: Defaults - Trackpad tap to click
   community.general.osx_defaults:
     domain: com.apple.AppleMultitouchTrackpad
@@ -104,7 +105,6 @@
     type: int
     value: 1
 
-# Won't be reflected in the UI...
 - name: Defaults - Trackpad right click bottom right
   community.general.osx_defaults:
     domain: com.apple.AppleMultitouchTrackpad
@@ -198,12 +198,20 @@
 
 ### Bluetooth
 
+# These don't seem to work for some reason, even though they're exactly what changing the settings through the UI does
 - name: Defaults - Show Bluetooth menu in titlebar
   community.general.osx_defaults:
     domain: com.apple.controlcenter
     key: NSStatusItem Visible Bluetooth
     type: int
     value: 1
+
+- name: Defaults - Set Bluetooth position
+  community.general.osx_defaults:
+    domain: com.apple.controlcenter
+    key: NSStatusItem Preferred Position Bluetooth
+    type: float
+    value: 341
 
 ### Clock
 
@@ -230,12 +238,20 @@
 
 ### Sound
 
-- name: Defaults - Always show sound in control centre
+# These don't seem to work for some reason, even though they're exactly what changing the settings through the UI does
+- name: Defaults - Always show sound in titlebar
   community.general.osx_defaults:
-    domain: com.apple.controlcentre
+    domain: com.apple.controlcenter
     key: NSStatusItem Visible Sound
     type: int
     value: 1
+
+- name: Defaults - Set sound position
+  community.general.osx_defaults:
+    domain: com.apple.controlcenter
+    key: NSStatusItem Preferred Position Sound
+    type: float
+    value: 373
 
 ## Misc apps
 
