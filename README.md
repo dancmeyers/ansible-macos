@@ -26,12 +26,16 @@ brew install ansible git gnupg pinentry-mac
 brew install --cask google-drive
 ```
 
-Connect Google Drive, then load our ASCII-armoured cert from it into GPG:
+Connect Google Drive, then load our ASCII-armoured public key from it into GPG:
 ```
-gpg --import ~/Google\ Drive/My\ Drive/certs/${USER}.asc
+gpg --import ~/Google\ Drive/My\ Drive/certs/${USER}.pub.asc
 ```
 
 N.B. the command to export this if modified is:
+```
+gpg --export --armor --output ~/Google\ Drive/My\ Drive/certs/${USER}.pub.asc 05A20464921EF1F031D860606A9F5EC6EF6A1B68
+```
+The equivalent including the secret key (only works if the secret key is in the keychain, not on the Yubikey)
 ```
 gpg --export-secret-keys --export-options export-backup --armor --output ~/Google\ Drive/My\ Drive/certs/${USER}.asc 05A20464921EF1F031D860606A9F5EC6EF6A1B68
 ```
