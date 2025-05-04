@@ -1,3 +1,7 @@
+- name: Install - exiftool
+  community.general.homebrew:
+    name: exiftool
+
 - name: Install - 1Password
   community.general.homebrew_cask:
     name: 1password
