@@ -135,3 +135,7 @@
   community.general.homebrew_cask:
     name: wireshark
 
+# OneNote is free, and useful everywhere
+- name: Install - MS OneNote
+  community.general.mas:
+    id: 784801555
