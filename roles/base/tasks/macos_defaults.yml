@@ -206,12 +206,13 @@
     type: int
     value: 1
 
-- name: Defaults - Set Bluetooth position
-  community.general.osx_defaults:
-    domain: com.apple.controlcenter
-    key: NSStatusItem Preferred Position Bluetooth
-    type: float
-    value: 341
+# This one is also different per-machine
+#- name: Defaults - Set Bluetooth position
+#  community.general.osx_defaults:
+#    domain: com.apple.controlcenter
+#    key: NSStatusItem Preferred Position Bluetooth
+#    type: float
+#    value: 341
 
 ### Clock
 
@@ -246,12 +247,13 @@
     type: int
     value: 1
 
-- name: Defaults - Set sound position
-  community.general.osx_defaults:
-    domain: com.apple.controlcenter
-    key: NSStatusItem Preferred Position Sound
-    type: float
-    value: 373
+# This one is also different per-machine
+#- name: Defaults - Set sound position
+#  community.general.osx_defaults:
+#    domain: com.apple.controlcenter
+#    key: NSStatusItem Preferred Position Sound
+#    type: float
+#    value: 373
 
 ## Misc apps
 
