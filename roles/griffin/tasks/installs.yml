@@ -115,10 +115,6 @@
   community.general.mas:
     id: 462058435
 
-- name: Install - MS Outlook
-  community.general.mas:
-    id: 985367838
-
 - name: Install - MS Powerpoint
   community.general.mas:
     id: 462062816

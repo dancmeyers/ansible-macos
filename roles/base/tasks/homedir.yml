@@ -29,7 +29,7 @@
 - name: Homedir - set SSH config
   ansible.builtin.file:
     src: '~/git/homedir-skel/.ssh/config'
-    path: '~/.ssh.config'
+    path: '~/.ssh/config'
     state: link
 
 - name: Homedir - install OhMyZsh!
